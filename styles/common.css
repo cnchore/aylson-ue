@@ -1,0 +1,230 @@
+ /*********
+ *样式重置
+ **********/
+ html, body, div, span, applet, object, iframe,
+ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+ a, abbr, acronym, address, big, cite, code,
+ del, dfn, em, img, ins, kbd, q, s, samp,
+ small, strike, strong, sub, sup, tt, var,
+ b, u, i, center,
+ dl, dt, dd, ol, ul, li,
+ fieldset, form, label, legend,
+ table, caption, tbody, tfoot, thead, tr, th, td,
+ button,article, aside, canvas, details, embed, figure,
+ figcaption, footer, header, hgroup, menu, nav,
+ output, ruby, section, summary, time, mark,
+ audio, video {
+ 	margin: 0;
+ 	padding: 0;
+ 	border: 0;
+ 	vertical-align: baseline;
+ 	background: transparent;
+ 	outline: none;
+ 	-webkit-box-sizing: border-box;
+ 	-moz-box-sizing: border-box;
+ 	box-sizing: border-box;
+ }
+ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+ ol, ul { list-style: none; }
+ button{background: transparent;}
+ blockquote, q { quotes: none; }
+ blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+ strong { font-weight: bold; }
+ table { border-collapse: collapse; border-spacing: 0; }
+ img { border: 0; max-width: 100%; }
+ html{
+ 	line-height: initial;
+ }
+ body{
+ 	font-size: 0.32rem;
+ }
+ html,body{
+ 	height: 100%;
+	background: #4F4B4E;
+ 	// background: -webkit-linear-gradient(#1a1822 0%, #4F4B4E 100%);
+ }
+ .q-img{
+ 	max-width: 100%;
+ }
+ /*********
+ * index
+ **********/
+ section.index {
+ 	width: 100%;
+ 	height: 100%;
+ 	background: #1a1822;
+ 	background: -webkit-linear-gradient(#1a1822 0%, #4F4B4E 100%);
+ }
+ .index header{
+ 	height: 2.8125rem;
+ 	width: 100%;
+ 	color: #fff;
+ 	font-size: 1.125rem;
+ 	text-align: center;
+ }
+ .index header .left{
+ 	width: 2.8125rem;
+ 	float: left;
+ 	line-height: 2.8125rem;
+ 	font-size: 0;
+ }
+ .index header .left i{
+ 	display: inline-block;
+ 	vertical-align: middle;
+ 	position: relative;
+ 	font-style: normal;
+ 	text-align: left;
+ 	direction: ltr;
+ 	-weibkit-transform: rotate(180deg);
+ 	transform: rotate(180deg);
+ 	width: 12px;
+ 	height: 20px;
+ 	margin: 7px 11px;
+ }
+ .index header .left i:before,
+ .index header .left i:after{
+ 	content: '';
+ 	pointer-events: none;
+ 	width: 14px;
+ 	height: 2px;
+ 	position: absolute;
+ 	bottom: 0;
+ 	margin: auto 0;
+ 	box-shadow: inset 0 0 0 32px;
+ 	-webkit-transform-origin: right;
+ 	transform-origin: right;
+
+ }
+ .index header .left i:before{
+ 	top:2px;
+ 	-webkit-transform: rotate(45deg);
+ 	transform: rotate(45deg);
+ }
+ .index header .left i:after{
+ 	top:0;
+ 	-webkit-transform: rotate(-45deg);
+ 	transform: rotate(-45deg);
+ }
+ .index header .right{
+ 	float: left;
+ 	line-height: 2.8125rem;
+ 	width: -webkit-calc(100% - 2.8125rem);
+ 	width: calc(100% - 2.8125rem);
+ 	transform: translate(-1.40625rem);
+ }
+ .index .page{
+ 	width: 100%;
+ 	height: -webkit-calc(100% - 2.8125rem);
+ 	height: calc(100% - 2.8125rem);
+ 	color: #cccccc;
+ }
+ .index .page .top{
+ 	width: 100%;
+ 	text-align: center;
+ 	height: 31.634182908546%;
+ 	/**垂直剧中**/
+ 	display: -webkit-box;
+ 	-webkit-box-pack:center;
+ 	-webkit-box-align:center;
+ 	-webkit-box-orient:vertical;
+
+ }
+ .index .page .top p{
+ 	font-size: .875rem;
+ 	line-height: 1.75rem;
+ }
+ .index .page .main{
+ 	height: 68.365817091454%;
+ 	padding-bottom:.625rem;
+ }
+ .index .page .main .left,
+ .index .page .main .right{
+ 	width: -webkit-calc(20.8% - 1px);
+ 	width: calc(20.8% - 1px);
+ 	float: left;
+ 	height: 100%;
+ }
+ .index .page .main .left .top,
+ .index .page .main .right .top{
+ 	width: 100%;
+ 	height: -webkit-calc(100% - 3.5625rem);
+ 	height: calc(100% - 3.5625rem);
+ 	border-bottom:1px solid #989898;
+ 	margin-bottom: 1.25rem;  
+ }
+ .index .page .main .left .top{
+ 	border-right:1px solid #989898;
+ }
+ .index .page .main .right .top{
+ 	border-left:1px solid #989898;
+ }
+ .index .page .main .left .bottom,
+ .index .page .main .right .bottom{
+ 	width: 100%;
+ 	height: -webkit-calc(1.5rem - 2px);
+ 	height: calc(1.5rem - 2px);
+ 	border: 1px solid #989898;
+ }
+ .index .page .main .left .bottom{
+ 	border-left: none;
+ }
+ .index .page .main .right .bottom{
+ 	border-right: none;
+ }
+ .index .page .main .center{
+ 	width: 58.4%;
+ 	float:left;
+ 	border-top: 1px solid #989898;
+ 	height: calc(100% - 1px);
+ 	padding: .75rem;
+ }
+ .door{
+ 	height: calc(100% - 2px);
+ 	width: calc(100% - 2px);
+ 	border: 1px solid #989898;
+ 	position: relative;
+ 		/**垂直剧中**/
+ 	display: -webkit-box;
+ 	-webkit-box-pack:center;
+ 	-webkit-box-align:center;
+ 	-webkit-box-orient:vertical;
+ }
+ .door .tool{
+ 	width: 100%;
+	position: absolute;
+	top:0.3125rem;
+	left: 0;
+	text-align: center;
+	
+ }
+ .door .tool i{
+ 	height: .625rem;
+ 	line-height: .625rem;
+ 	 display: inline-block;
+ 	 width: .625rem;
+ 	 border-radius: 50%;
+ 	 border: 1px solid #989898;
+ 	 margin-left: 0.15625rem;
+ }
+ .door .tool i:first-child{
+ 	margin: 0;
+ 	font-size: 0;
+ }
+ .look{
+ 	width: 100%;
+
+ }
+ 
+ .look .top .r{
+ 	width: calc(100% - 3.625rem);
+ 	float: left;
+ }
+ .look img.top-l{
+	width: 2.75rem;
+	margin-left: .875rem;
+	height: 100%;
+ }
+ .look img.top-r{
+ 	width: 2.375rem;
+ 	margin-left: 3.125rem;
+ }
