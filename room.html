@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui, shrink-to-fit=no">
+	<link rel="stylesheet" href="styles/common.css">
+	<link rel="stylesheet" href="styles/room.css">
+	<title>安居艾臣体验中心</title>
+</head>
+<body>
+	<section class="room">
+		<header>
+			<div class="left">
+				<i></i>
+			</div>
+			<div class="right">客厅</div>
+		</header>
+		<div class="page">
+			<div class="light"></div><!-- 灯 -->
+			<div class="rod"></div><!-- 窗帘杆 -->
+			<div class="window">
+				<div class="left-win"></div>
+				<div class="right-win"></div>
+			</div><!-- 窗户 -->
+			<div class="curtains"></div><!-- 窗帘 -->
+			<div class="sound"></div><!-- 音响 -->
+			<div class="air"></div><!-- 空调 -->
+			<div class="sofa"></div><!-- 沙发 -->
+		</div>
+	</section>
+	<script type="text/javascript">
+		(function(doc, win) {
+			var docEl = doc.documentElement,
+			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+			recalc = function() {
+				var clientWidth = docEl.clientWidth;
+				if (!clientWidth) return;
+				if (clientWidth >= 750) {
+					docEl.style.fontSize = '32px';
+				} else {
+					docEl.style.fontSize = 32 * (clientWidth / 750) + 'px';
+				}
+			};
+
+			if (!doc.addEventListener) return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+</body>
+</html>

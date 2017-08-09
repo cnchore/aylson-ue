@@ -1,0 +1,164 @@
+/*********
+ * room
+ **********/
+ body{
+ 	background: #d2cfc8;
+ }
+ section.room {
+ 	width: 100%;
+ 	height: 100%;
+ 	background: url('../images/room/7.png') no-repeat,
+ 							url('../images/room/9.png') no-repeat,
+ 							url('../images/room/8.png') no-repeat,
+ 							#bf9e8d;
+ 	background-position: top 5.59375rem left 0,
+										 	 top left,
+										 	 top 6.96875rem left 1.375rem,
+										 	 top left;
+ 	background-size: 1.375rem 25.25rem,
+ 									 100% 6.96875rem,
+ 									 100% 22.5rem,
+ 									 100%;
+ }
+ .room header{
+ 	height: 2.8125rem;
+ 	width: 100%;
+ 	color: #000;
+ 	font-size: 1.125rem;
+ 	text-align: center;
+ }
+ .room header .left{
+ 	width: 2.8125rem;
+ 	float: left;
+ 	line-height: 2.8125rem;
+ 	font-size: 0;
+ }
+ .room header .left i{
+ 	display: inline-block;
+ 	vertical-align: middle;
+ 	position: relative;
+ 	font-style: normal;
+ 	text-align: left;
+ 	direction: ltr;
+ 	-weibkit-transform: rotate(180deg);
+ 	transform: rotate(180deg);
+ 	width: 12px;
+ 	height: 20px;
+ 	margin: 7px 11px;
+ }
+ .room header .left i:before,
+ .room header .left i:after{
+ 	content: '';
+ 	pointer-events: none;
+ 	width: 14px;
+ 	height: 2px;
+ 	position: absolute;
+ 	bottom: 0;
+ 	margin: auto 0;
+ 	box-shadow: inset 0 0 0 32px;
+ 	-webkit-transform-origin: right;
+ 	transform-origin: right;
+
+ }
+ .room header .left i:before{
+ 	top:2px;
+ 	-webkit-transform: rotate(45deg);
+ 	transform: rotate(45deg);
+ }
+ .room header .left i:after{
+ 	top:0;
+ 	-webkit-transform: rotate(-45deg);
+ 	transform: rotate(-45deg);
+ }
+ .room header .right{
+ 	float: left;
+ 	line-height: 2.8125rem;
+ 	width: -webkit-calc(100% - 2.8125rem);
+ 	width: calc(100% - 2.8125rem);
+ 	transform: translate(-1.40625rem);
+ }
+ .room .page{
+ 	height: 100%;
+ 	width: 100%;
+ 	position: relative;
+ }
+ /** 灯**/
+ .page .light{
+ 	position: absolute;
+ 	top: -.25rem;
+ 	left:50%;
+ 	transform: translate(-50%);
+ 	width: 5rem;
+ 	height: 12.3125rem;
+ 	background: url('../images/room/4.png') no-repeat;
+ 	background-size: cover;
+ 	z-index: 5;
+ }
+/*窗帘杆*/
+.page .rod{
+	position: absolute;
+	top:6rem;
+	left:2.96875rem;
+	right:0.875rem;
+	height: .625rem;
+	background: url('../images/room/3.png') no-repeat;
+ 	background-size: cover;
+
+}
+/*窗户*/
+.page .window{
+	position: absolute;
+	top:7.34375rem;
+	left:4.4375rem;
+	right: 2.375rem;
+	height: 14.1875rem;
+	background-color: #fff;
+	padding: 8px 11px;
+}
+.page .window .left-win,
+.page .window .right-win{
+	width: calc(50% - 4px);
+	height: 100%;
+	background-color: #bbf6fa;
+	
+}
+.left-win{
+	float: left;	
+	padding-right: 7px;
+}
+.right-win{
+	padding-left: 7px;
+	float: right;
+}
+/*窗帘*/
+/*音响*/
+.page .sound{
+	position: absolute;
+	top:8.1875rem;
+	left:1.75rem;
+	width: 1.5625rem;
+	height: 5rem;
+	background: url('../images/room/10.png') no-repeat;
+ 	background-size: cover;
+}
+/*空调*/
+.page .air{
+	position: absolute;
+	top:16.125rem;
+	right:0;
+	width: 3.5rem;
+	height: 13.96875rem;
+	background: url('../images/room/5.png') no-repeat;
+ 	background-size: cover;
+}
+/*沙发*/
+.page .sofa{
+	position: absolute;
+	top:22.4375rem;
+	left:50%;
+	transform: translate(-50%);
+	width: 17.40625rem;
+	height: 10.9375rem;
+	background: url('../images/room/11.png') no-repeat;
+ 	background-size: cover;
+}
