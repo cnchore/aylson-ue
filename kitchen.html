@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui, shrink-to-fit=no">
+	<link rel="stylesheet" href="styles/common.css">
+	<link rel="stylesheet" href="styles/kitchen.css">
+	<title>安居艾臣体验中心</title>
+</head>
+<body>
+	<section class="kitchen">
+		<header>
+			<div class="left">
+				<i></i>
+			</div>
+			<div class="right">厨房</div>
+		</header>
+		<div class="page">
+			<!-- 灯 -->
+			<div class="light">
+				<div class="tips">
+					<span class="point"></span>
+					<span class="content">灯</span>
+				</div>
+			</div>
+			<!-- 窗户 -->
+			<div class="window">
+				<div class="left"></div>
+				<div class="frame"></div>
+				<div class="right"></div>
+			</div>
+			<!-- 抽风机 -->
+			<div class="fan"></div>
+			<!-- 送风机 -->
+			<div class="air-blower"></div>
+			<!-- 冰箱 -->
+			<div class="fridge"></div>
+			<!-- 橱柜 -->
+			<div class="cupboard">
+				<!-- 上门框 -->
+				<div class="top frame"></div>
+				<!-- 灯带 -->
+				<div class="light-belt"></div>
+				<!-- 开关 -->
+				<div class="btn"></div>
+				<!-- 水龙头 -->
+				<div class="water-tap"></div>
+				<!-- 下门框 -->
+				<div class="bottom frame"></div>
+				<!-- 底线 -->
+				<div class="bottom-line"></div>
+			</div>
+			<!-- 抽烟机 -->
+			<div class="smoke-machine">
+				<div class="machine"></div>
+			</div>
+			<!-- 操作台墙 -->
+			<div class="console-wall"></div>
+			<!-- 锅 -->
+			<div class="pot"></div>
+			<!-- 操作台 -->
+			<div class="console">
+				<div class="top"></div>
+			</div>
+			<!-- 餐桌 -->
+			<div class="dining-table">
+				<div class="top"></div>
+			</div>
+			<!-- 地毯 -->
+			<div class="carpet"></div>
+			<!-- 中控 -->
+			<div class="model"></div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		(function(doc, win) {
+			var docEl = doc.documentElement,
+			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+			recalc = function() {
+				var clientWidth = docEl.clientWidth;
+				if (!clientWidth) return;
+				if (clientWidth >= 750) {
+					docEl.style.fontSize = '32px';
+				} else {
+					docEl.style.fontSize = 32 * (clientWidth / 750) + 'px';
+				}
+			};
+
+			if (!doc.addEventListener) return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+</body>
+</html>

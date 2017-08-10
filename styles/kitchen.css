@@ -1,0 +1,290 @@
+/*********
+ * kitchen
+ **********/
+ body{
+ 	background: #bf9e8d;
+ }
+ section.kitchen {
+ 	width: 100%;
+ 	height: 100%;
+ 	background: url('../images/kitchen/ceilling.png') no-repeat,
+						 	-webkit-linear-gradient(#ebe7e6 0%,#ebe7e6 22.71875rem,#bf9e8d 22.71875rem, #bf9e8d 100%);
+ 	background-position: top left,
+										 	 top 6.96875rem left 0;
+ 	background-size: 100% 6.96875rem,
+								 	 100% 100%;
+ }
+ .kitchen header{
+ 	height: 2.8125rem;
+ 	width: 100%;
+ 	color: #000;
+ 	font-size: 1.125rem;
+ 	text-align: center;
+ }
+ .kitchen header .left{
+ 	width: 2.8125rem;
+ 	float: left;
+ 	line-height: 2.8125rem;
+ 	font-size: 0;
+ }
+ .kitchen header .left i{
+ 	display: inline-block;
+ 	vertical-align: middle;
+ 	position: relative;
+ 	font-style: normal;
+ 	text-align: left;
+ 	direction: ltr;
+ 	-weibkit-transform: rotate(180deg);
+ 	transform: rotate(180deg);
+ 	width: 12px;
+ 	height: 20px;
+ 	margin: 7px 11px;
+ }
+ .kitchen header .left i:before,
+ .kitchen header .left i:after{
+ 	content: '';
+ 	pointer-events: none;
+ 	width: 14px;
+ 	height: 2px;
+ 	position: absolute;
+ 	bottom: 0;
+ 	margin: auto 0;
+ 	box-shadow: inset 0 0 0 32px;
+ 	-webkit-transform-origin: right;
+ 	transform-origin: right;
+
+ }
+ .kitchen header .left i:before{
+ 	top:2px;
+ 	-webkit-transform: rotate(45deg);
+ 	transform: rotate(45deg);
+ }
+ .kitchen header .left i:after{
+ 	top:0;
+ 	-webkit-transform: rotate(-45deg);
+ 	transform: rotate(-45deg);
+ }
+ .kitchen header .right{
+ 	float: left;
+ 	line-height: 2.8125rem;
+ 	width: -webkit-calc(100% - 2.8125rem);
+ 	width: calc(100% - 2.8125rem);
+ 	transform: translate(-1.40625rem);
+ }
+ .kitchen .page{
+ 	height: 100%;
+ 	width: 100%;
+ 	position: relative;
+ }
+ /*tips*/
+ .tips{
+ 	background-color: #282828;
+ }
+ .tips .content:before{
+ 	top: 25%;
+ 	border-color: #282828 #282828 transparent transparent;
+ 	transform: rotate(45deg);
+ }
+ /** 灯**/
+ .page .light{
+ 	position: absolute;
+ 	top: -.25rem;
+ 	left:50%;
+ 	transform: translate(-50%);
+ 	width: 5rem;
+ 	height: 12.3125rem;
+ 	background: url('../images/kitchen/light.png') no-repeat;
+ 	background-size: cover;
+ 	z-index: 5;
+ }
+ .light .tips{
+ 	left:auto;
+ 	top:auto;
+ 	right: -1.6rem;
+ 	bottom: .2rem;
+ }	
+/*窗户*/
+.window{
+	position: absolute;
+	left: 0;
+	top: 5.25rem;
+	width: 6.8rem;
+	height: 5.71875rem;
+	background: url('../images/kitchen/scenery.png') no-repeat;
+	background-size: cover;
+	border: 0.25rem solid #fff;
+}
+.window .left,
+.window .right{
+	position: absolute;
+	width: calc(50% - 0.125rem);
+	height: 100%;
+	background: url('../images/kitchen/win.png');
+	background-size: cover;
+}
+.window .left{
+	left: 0;
+}
+.window .right{
+	right: 0;
+}
+.window .frame{
+	height: 100%;
+	width: 0.25rem;
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%);
+}
+/*抽风机*/
+.fan{
+	position: absolute;
+	left:7.25rem;
+	top:5.25rem;
+	width: 2rem;
+	height: 2rem;
+	border: 0.125rem solid #ccc8c9;
+	border-radius: 50%;
+	background: url('../images/kitchen/fan.png') no-repeat;
+	background-size: cover;
+}
+/*送风机*/
+.air-blower{
+	position: absolute;
+	right:5.1875rem;
+	top:4.0625rem;
+	width: 1.75rem;
+	height: 8.1875rem;
+	background: url('../images/kitchen/airBlower.png') no-repeat,#9d948d;
+	background-position: top 1.625rem right,top left;
+	background-size: 1rem 1.9375rem,100% 100%;
+}
+/*冰箱*/
+.fridge{
+	position: absolute;
+	left:0;
+	top:14.5125rem;
+	width: 4.0625rem;
+	height: 12.375rem;
+	background: url('../images/kitchen/fridge.png') no-repeat;
+	background-size: cover;
+}
+/*橱柜*/
+.cupboard{
+	position: absolute;
+	right:1.625rem;
+	top:12.1875rem;
+	left: 4.0625rem;
+	height: 14.625rem;
+	background: -webkit-linear-gradient(#e0d8d0 0%,#e0d8d0 5.5625rem,#67625c 5.5625rem,#67625c 9.75rem,#e0d8d0 9.75rem,#e0d8d0 100%);
+	background-position: top left,top 5.5625rem left,top 9.75rem left;
+	background-size: 5.5625rem 100%,4.1875rem 100%,4.625rem 100%;
+	
+}
+.cupboard .top.frame{
+	background: linear-gradient(to right,
+		transparent 33.33%, #beb7b1 0,
+		#beb7b1 calc(33.33% + 0.125rem),transparent 0,
+		transparent 66.66%, #beb7b1 0,
+		#beb7b1 calc(66.66% + 0.125rem),transparent 0);
+	background-size: 100% 0.125rem;
+	width: 100%;
+	height: 5.5625rem;
+}
+.cupboard .bottom.frame{
+
+}
+/*抽烟机*/
+.smoke-machine{
+	position: absolute;
+	right: 1.625rem;
+	top: 4.0625rem;
+	width: 3.5625rem;
+	height: 9.875rem;
+	background-color: #e5e4e2;
+	z-index: 1
+}
+.smoke-machine .machine{
+	position: absolute;
+	left: -1.25rem;
+  top: 0;
+	width: 5.9375rem;
+	height: 11.8125rem;
+	background: url('../images/kitchen/smokeMachine.png') no-repeat;
+	background-size: cover;
+}
+
+/*操作台墙*/
+.console-wall{
+	position: absolute;
+	right:0;
+	top:4.0625rem;
+	width: 1.625rem;
+	height: 18.8125rem;
+	background-color: #ccc8c9;
+}
+/*锅*/
+.pot{
+	position: absolute;
+  top: 20.21875rem;
+	right:1.34375rem;
+	width: 5.375rem;
+	height: 2.375rem;
+	background: url('../images/kitchen/pot.png') no-repeat;
+	background-size: cover;
+}
+/*操作台*/
+.console{
+	position: absolute;
+	right: 0;
+	top: 23rem;
+	width: 7.09375rem;
+	height: 1.53125rem;
+	background-color: #ccc8c9;
+}
+.console .top{
+	position: absolute;
+	top:-0.3125rem;
+	width: 8rem;
+	left: -0.9375rem;
+	height: 0.3125rem;
+	background-color: #343331;
+}
+/*餐桌*/
+.dining-table{
+	position: absolute;
+	right: 0;
+	top: 24.875rem;
+	width: 14.25rem;
+	height: 6.3125rem;
+	background-color: #fbfbfb;
+	z-index: 1;
+}
+.dining-table .top{
+	position: absolute;
+	top: -0.3125rem;
+	right: 0;
+	left: -0.9375rem;
+	height: 0.3125rem;
+	background-color: #343331;
+}
+/*地毯*/
+.carpet{
+	position: absolute;
+	right: 0;
+	top: 29.1875rem;
+	width: 20.5rem;
+	height: 5.5625rem;
+	background-color: #a28577;
+	border-radius: 5.5625rem 0 0 5.5625rem;
+}
+/*中控*/
+.model{
+	position: absolute;
+	bottom:0;
+	width: 100%;
+	height: 10.25rem;
+	background: rgba(40,40,40,.3);
+}
+
