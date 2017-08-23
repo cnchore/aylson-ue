@@ -1,0 +1,219 @@
+/*********
+ * fridge
+ **********/
+ body{
+ 	background: #fff;
+ }
+ section.fridge {
+ 	width: 100%;
+ 	height: 100%;
+
+ }
+ .fridge header{
+ 	height: 2.8125rem;
+ 	width: 100%;
+ 	color: #000;
+ 	font-size: 1.125rem;
+ 	text-align: center;
+ }
+ .fridge header .left{
+ 	width: 2.8125rem;
+ 	float: left;
+ 	line-height: 2.8125rem;
+ 	font-size: 0;
+ }
+ .fridge header .left i{
+ 	display: inline-block;
+ 	vertical-align: middle;
+ 	position: relative;
+ 	font-style: normal;
+ 	text-align: left;
+ 	direction: ltr;
+ 	transform: rotate(180deg);
+ 	width: 12px;
+ 	height: 20px;
+ 	margin: 7px 11px;
+ }
+ .fridge header .left i:before,
+ .fridge header .left i:after{
+ 	content: '';
+ 	pointer-events: none;
+ 	width: 14px;
+ 	height: 2px;
+ 	position: absolute;
+ 	bottom: 0;
+ 	margin: auto 0;
+ 	box-shadow: inset 0 0 0 32px;
+ 	-webkit-transform-origin: right;
+ 	transform-origin: right;
+
+ }
+ .fridge header .left i:before{
+ 	top:2px;
+ 	-webkit-transform: rotate(45deg);
+ 	transform: rotate(45deg);
+ }
+ .fridge header .left i:after{
+ 	top:0;
+ 	-webkit-transform: rotate(-45deg);
+ 	transform: rotate(-45deg);
+ }
+ .fridge header .right{
+ 	float: left;
+ 	line-height: 2.8125rem;
+ 	width: -webkit-calc(100% - 2.8125rem);
+ 	width: calc(100% - 2.8125rem);
+ 	transform: translate(-1.40625rem);
+ }
+ .fridge .page{
+ 	height: 100%;
+ 	width: 100%;
+ 	position: relative;
+ 	background: url('../images/fridge/bg.jpg') no-repeat,#fff;
+ 	background-position: top left,top 21.5625rem left;
+ 	-webkit-background-size: 100% 21.5625rem,100% 100%;
+ 	background-size: 100% 21.5625rem,100% 100%;
+ }
+ /*信息展示*/
+ .page .out{
+ 	position: absolute;
+ 	left: 0;
+ 	right: 0;
+ 	top:9.46875rem;
+ 	height:12.125rem; 
+ 	background-color: rgba(0,0,0,.4);
+ 	color: #fff;
+
+ }
+ .out .left,
+ .out .right{
+ 	width: 50%;
+ 	height: 100%;
+ 	
+ 	float: left;
+ }
+
+ .page .out .left{
+ 	width: calc(50% - 1px);
+ 	padding: 1.875rem;
+ 	border-right: 1px solid rgba(160,158,157,.4);
+ 	display: -webkit-box;
+	-webkit-box-pack:center;
+	-webkit-box-align:center;
+	-webkit-box-orient:vertical;
+ }
+ .page .title{
+ 	letter-spacing: 1px;
+ 	font-size: 1.875rem;
+ }
+ .page .title sup{
+ 	font-size: 1rem;
+ 	font-weight: 200;
+ 	vertical-align: super;
+ }
+ .page .desc{
+ 	font-size: 0.75rem;
+ 	color: #cecdcd;
+ }
+ .page .right{
+ 	height: 100%;
+ 	text-align: center;
+ }
+
+ .page .left:before,
+ .page .top:before,
+ .page .bottom:before{
+	content: '';
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	border-right: 1px solid rgba(160,158,157,1);
+	transform: rotate(45deg);
+ }
+ .page .left:before{
+ 	top:50%;
+ 	left: calc(50% - 18px - 1.875rem);
+ }
+ .page .top:before{
+ 	top:25%;
+ 	left: calc(100% - 18px - 1.875rem);
+ }
+ .page .bottom:before{
+ 	top:75%;
+ 	left: calc(100% - 18px - 1.875rem);
+ }
+ .page .left:after,
+ .page .top:after,
+ .page .bottom:after{
+	content: '';
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	border-right: 1px solid rgba(160,158,157,1);
+	transform: rotate(-45deg);
+ }
+ .page .left:after{
+ 	top:50%;
+ 	left: calc(50% - 18px - 1.875rem);
+ }
+ .page .top:after{
+ 	top:25%;
+ 	left: calc(100% - 18px - 1.875rem);
+ }
+ .page .bottom:after{
+ 	top:75%;
+ 	left: calc(100% - 18px - 1.875rem);
+ }
+ .page .top,.bottom{
+ 	height: 50%;
+ 	padding-top: 0.625rem;
+ 	padding-bottom: 0.625rem;
+ }
+ .page .right:before{
+ 	position: absolute;
+ 	content: '';
+ 	top:50%;
+ 	left: calc(50% - 1px);
+ 	right: 0;
+ 	height: 1px;
+ 	background-color: rgba(160,158,157,.4);
+ 	/*border-right: 1px solid rgba(160,158,157,.4);*/
+ }
+ /*中控*/
+ .page .model{
+ 	position: absolute;
+ 	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 16.09375rem;
+/*	display: -webkit-box;
+	-webkit-box-pack:center;
+	-webkit-box-align:center;
+	-webkit-box-orient:vertical;*/
+
+ }
+ .model .icon{
+ 	margin: 0.9375rem;
+ 	float: left;
+ 	width: 3.875rem;
+ 	height: 3.875rem;
+	font-size: 0.75rem;
+	color: #989898;
+	padding-top: 4.75rem;
+	background-size: 3.875rem 3.875rem;
+	background-repeat: no-repeat;
+	text-align: center;
+
+ }
+ .btn-0-fresh{
+ 	background-image: url('../images/fridge/0-fresh.png');
+ }
+ .btn-fresh{
+ 	background-image: url('../images/fridge/fresh.png');
+ }
+ .btn-freeze{
+ 	background-image: url('../images/fridge/freeze.png');
+ }
+ .btn-lock{
+ 	background-image: url('../images/fridge/lock.png');
+ }

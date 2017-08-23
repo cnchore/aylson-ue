@@ -1,0 +1,275 @@
+/*********
+ * air
+ **********/
+ body{
+ 	background: #5aaebc;
+ 	background: -webkit-linear-gradient(#5aaebc, #1464b5);
+
+ }
+ .hide{
+ 	display: none;
+ }
+ .show{
+ 	display:block;
+ }
+ section.air {
+ 	width: 100%;
+ 	height: 100%;
+	
+ }
+ .air header{
+ 	height: 2.8125rem;
+ 	width: 100%;
+ 	color: #fff;
+ 	font-size: 1.125rem;
+ 	text-align: center;
+ }
+ .air header .left{
+ 	width: 2.8125rem;
+ 	float: left;
+ 	line-height: 2.8125rem;
+ 	font-size: 0;
+ }
+ .air header .left i{
+ 	display: inline-block;
+ 	vertical-align: middle;
+ 	position: relative;
+ 	font-style: normal;
+ 	text-align: left;
+ 	direction: ltr;
+ 	transform: rotate(180deg);
+ 	width: 12px;
+ 	height: 20px;
+ 	margin: 7px 11px;
+ }
+ .air header .left i:before,
+ .air header .left i:after{
+ 	content: '';
+ 	pointer-events: none;
+ 	width: 14px;
+ 	height: 2px;
+ 	position: absolute;
+ 	bottom: 0;
+ 	margin: auto 0;
+ 	box-shadow: inset 0 0 0 32px;
+ 	-webkit-transform-origin: right;
+ 	transform-origin: right;
+
+ }
+ .air header .left i:before{
+ 	top:2px;
+ 	-webkit-transform: rotate(45deg);
+ 	transform: rotate(45deg);
+ }
+ .air header .left i:after{
+ 	top:0;
+ 	-webkit-transform: rotate(-45deg);
+ 	transform: rotate(-45deg);
+ }
+ .air header .right{
+ 	float: left;
+ 	line-height: 2.8125rem;
+ 	width: -webkit-calc(100% - 2.8125rem);
+ 	width: calc(100% - 2.8125rem);
+ 	transform: translate(-1.40625rem);
+ }
+ .page .temperature{
+ 	height: 24.53125rem;
+ 	display: -webkit-box;
+ 	-webkit-box-align: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  color: #fff;
+ }
+ .temperature .info{
+ 	display: -webkit-box;
+ 	-webkit-box-align: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+ 	width: 14.625rem;
+ 	height: 14.625rem;
+	border:0.0625rem solid #ddd;
+	border-radius: 50%;
+ }
+ .temperature .info .title{
+ 	 font-size: 4.5625rem;
+ 	 letter-spacing: 2px;
+ }
+ .temperature .info .title sup{
+ 	font-size: 2.28125rem;
+ 	vertical-align: text-top;
+ }
+ .temperature .info .desc{
+ 	font-size: 0.875rem;
+ 	letter-spacing: 1px;
+ }
+ .temperature .action{
+ 	height: 7.375rem;
+ 	text-align: center;
+	display: flex;
+	justify-content: center;
+  align-items: center;
+ }
+ .temperature .action span{
+ 	padding: 0 8px;
+ 	font-size: 2.5rem;
+ 	font-weight: 100;
+ 	color: rgba(238, 238, 238, 0.5);
+ }
+ .temperature .action .progress{
+ 	height:0.4375rem;
+ 	width:11.75rem;
+ 	background-color: rgba(238, 238, 238, 0.3);
+ 	border-radius: 5px;
+ 	position: relative;
+ 	margin-top: 0.40625rem;
+ }
+ .progress:before,.progress:after{
+ 		position: absolute;
+ 		content: '';
+ }
+ .progress:before{
+ 	height:0.4375rem;
+ 	width: 50%;
+ 	top: 0;
+ 	left: 0;
+ 	background-color: #eee;
+ 	border-radius: 5px;
+ }
+.progress:after{
+	top: 0;
+	left: 50%;
+	height: .75rem;
+	width: .75rem;
+	border-radius: 50%;
+	background-color: #fff;
+	transform: translate(-50%,-25%);
+}
+.btns{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(40, 40, 40, 0.1);
+	color: #fff;
+	font-size: 0;
+	padding: 0.46875rem 0;
+	
+}
+.btns .arrow{
+	height: 1.5625rem;
+	width: 100%;
+	display: block;
+	position: relative;
+}
+.arrow:before,.arrow:after{
+	position: absolute;
+	content: '';
+	width: 18px;
+	height: 18px;
+	left: calc(50% - 9px);
+
+}
+.arrow:before{
+	border-left: 1px solid rgba(238, 238, 238, 0.5);
+	transform: rotate(-45deg);
+
+}
+.arrow:after{
+	border-right: 1px solid rgba(238, 238, 238, 0.5);
+	transform: rotate(45deg);
+}
+.btns img{
+	width: 3.5rem;
+	height: 3.5rem;
+}
+.btns div{
+	font-size: 0.875rem;
+	text-align: center;
+	display: inline-block;
+	padding: 0.46875rem 0;
+	width: 25%;
+}
+.modal{
+	position: absolute;
+	left:0;
+	right: 0;
+	bottom: 0;
+	background-color: #fff;
+	color: #282828;
+	font-size: .875rem;
+	text-align: center;
+	letter-spacing: 1px;
+	font-weight: 200;
+}
+.modal div{
+	
+	line-height: 2.8125rem;
+	border-bottom: 1px solid #eee;
+}
+.modal .header{
+	font-size: 1.0625rem;
+	
+}
+.modal .header span{
+	position: absolute;
+	left: 0.9375rem;
+	top: 0;
+	color: #03a9f5;
+}
+.modal .icon{
+	position: relative;
+}
+.modal .icon:before{
+	position: absolute;
+	content: '';
+	
+	left: -1.5rem;
+	width: 1rem;
+	top: 0.1875rem;
+	height: 1rem;
+	background-repeat: no-repeat;
+	-webkit-background-size: 100%;
+	background-size: 100%;
+	background-position: center;
+}
+.modal .zhileng:before{
+	background-image: url('../images/air/制冷.png');
+}
+.modal .zhire:before{
+	background-image: url('../images/air/制热.png');
+}
+.modal .zidong:before{
+	background-image: url('../images/air/自动.png');
+}
+.modal .songfeng:before{
+	background-image: url('../images/air/送风.png');
+}
+.modal .chushi:before{
+	background-image: url('../images/air/除湿.png');
+}
+.modal .check span:after{
+	position: absolute;
+	content: '';
+	height: 1rem;	
+	left: calc(100% + .75rem);
+	width: .5rem;
+	top: -0.1875rem;
+	border:2px solid #03a9f5;
+	border-top: none;
+	border-left: none;
+	transform: rotate(45deg);
+}
+/*风速弹出层*/
+.modal .gaofeng:before{
+	background-image: url('../images/air/高风.png');
+}
+.modal .zhongfeng:before{
+	background-image: url('../images/air/中风.png');
+}
+.modal .difeng:before{
+	background-image: url('../images/air/低风.png');
+}
+.modal .zidongfeng:before{
+	background-image: url('../images/air/自动.png');
+}
