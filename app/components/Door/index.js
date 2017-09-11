@@ -3,9 +3,23 @@ import png1 from './images/1.png'
 import png2 from './images/2.png'
 import png4 from './images/4.png'
 import './door'
-
+import {Link} from 'react-router'
 class Door extends Component{
+	constructor(props) {
+	  super(props);
+	
+	  this.state = {
+	  	modelVisable:false,
+	  };
+	}
 	render(){
+		let handerFinger=()=>{
+			this.setState({
+				modelVisable:true
+			})
+		}
+
+		const {modelVisable} =this.state;
 		return (
 			<section className="index">
 				<header>
@@ -33,7 +47,7 @@ class Door extends Component{
 										<img src={png1} alt="密码锁" className="q-img look" />
 										<img src={png2} alt="门铃" className="q-img bell" />
 									</div>
-									<div className="l-b">
+									<div className="l-b" onClick={handerFinger}>
 										<img src={png4} alt="指纹识别" className="q-img finger-mark" />
 										<div className="tips">
 											<span className="point"></span>
@@ -49,6 +63,16 @@ class Door extends Component{
 						</div>
 					</div>
 				</div>
+				
+				<div className="model-win" style={{opacity:modelVisable?1:0,zIndex:modelVisable?11:-1}}>
+					<div className="body">
+						<Link to="/room">
+							<div className="content-img"></div>
+							<div className="desc">点击开锁</div>
+						</Link>
+					</div>
+				</div>
+					
 			</section>
 		)
 	}
