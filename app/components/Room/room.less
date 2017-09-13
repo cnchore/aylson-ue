@@ -36,25 +36,21 @@
         padding: .075rem .35rem;
         border-radius: 3px;
         font-weight: 400;
+        .content:before{
+            content: '';
+            position: absolute;
+            z-index: 1;
+             top: 25%;
+            left: -12px;
+            width: 0;
+            height: 0;
+            border-width: 3px 9px;
+            border-style: solid;
+            border-color: #282828 #282828 transparent transparent;
+            transform: rotate(45deg);
+         }
      }
-    .tips .content:before{
-        content: '';
-        position: absolute;
-        z-index: 1;
-        top: 50%;
-        left: -12px;
-        width: 0;
-        height: 0;
-        border-width: 3px 9px;
-        border-style: solid;
-        border-color: #282828 #282828 transparent transparent;
-        transform: rotate(-45deg);
-     }
-    .tips .point{
-         width: 5px;
-         height: 5px;
-         background-color: #fff;
-     }
+    
      
     header{
      	height: 2.8125rem;
@@ -70,15 +66,7 @@
      	width: 100%;
      	position: relative;
      }
-     /*tips*/
-    .tips{
-     	background-color: #282828;
-     }
-    .tips .content:before{
-     	top: 25%;
-     	border-color: #282828 #282828 transparent transparent;
-     	transform: rotate(45deg);
-     }
+     
      /** 灯**/
      .page .light{
      	position: absolute;
@@ -205,7 +193,10 @@
      	left:4rem;
      	top:auto;
      	bottom: 40%;
-        width: ~'calc(.75rem*2 + .7rem)';
+        width: ~'calc(.9rem*2 + .7rem)';
+        .point{
+            left: -25%;
+        }
      }
      /*音响*/
      .page .sound{
@@ -222,6 +213,9 @@
      	top:auto;
      	right: ~'calc(-1.5625rem + -12px)';
      	bottom: 25%;
+        .point{
+            left: -25%;
+        }
      }
      /*空调*/
      .page .air{
@@ -236,6 +230,10 @@
      .air .tips{
      	left:-2.25rem;
      	top:1rem;
+        .point{
+            left: auto;
+            right: -12px;
+        }
      }
      .air .tips .content:before{
      	left:auto;
@@ -245,12 +243,53 @@
      }
      .air .wind{
      	position: absolute;
-     	top:.625rem;
-     	left:-0.5625rem;
-     	width: 3.5rem;
-     	height: 2.375rem;
-     	background: url('images/6.png') no-repeat;
-     	background-size: cover;
+     	top:.5rem;
+     	left:-3rem;
+        // width: 3.5rem;
+     	width: 200/32rem;
+        // height: 2.375rem;
+     	height: 84/32rem;
+     	// background: url('images/6.png') no-repeat;
+     	background-size: 100% 100%;
+        // transform: rotate(10deg);
+        &.run{
+            animation: gasrun 1.6s infinite ease-in-out;
+        }
+     }
+     @keyframes gasrun{
+        0% {
+            background: url('images/gas0.png') no-repeat;
+            background-size: 100% 100%;
+        }
+        14.285% {
+            background: url('images/gas1.png') no-repeat;
+            background-size: 100% 100%;
+        }
+        28.571% {
+            background: url('images/gas2.png') no-repeat;
+            background-size: 100% 100%;
+        }
+        42.857% {
+            background: url('images/gas3.png') no-repeat;
+            background-size: 100% 100%;
+        }
+        57.142% {
+            background: url('images/gas4.png') no-repeat;
+            background-size: 100% 100%;
+        }
+        71.428% {
+            background: url('images/gas3.png') no-repeat;
+            background-size: 100% 100%;
+        }
+        85.714% {
+            background: url('images/gas2.png') no-repeat;
+            background-size: 100% 100%;
+        }
+        100% {
+            background: url('images/gas1.png') no-repeat;
+            background-size: 100% 100%;
+        }
+        
      }
      /*沙发*/
      .page .sofa{

@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import './room'
 import cs from 'classnames'
-import {Link} from 'react-router'
+import {Link,hashHistory} from 'react-router'
 class Room extends Component{
 	constructor(props) {
 	  super(props);
@@ -10,12 +10,13 @@ class Room extends Component{
 	  	lightOpen:false,
 	  	curtainsOpen:true,
 	  	windowOpen:false,
+	  	airRun:false,
 	  	startx:0,
 	  	starty:0,
 	  	endx:0,
 	  	endy:0,
 	  	documentWidth:window.screen.availWidth,
-	  	arrow:'',
+	  	animation:'',
 	  };
 	}
 	componentDidMount(){
@@ -31,9 +32,7 @@ class Room extends Component{
   handleStart(e){
       // e.preventDefault();
       e.stopPropagation();
-      // console.log('start:',e.targetTouches[0])
-			//前面原生js用的是touches,其实还有一个targetTouches，在这两个的输出结果是一致的。
-      this.setState({  //当触摸开始时候，记录当时的坐标值，还有设置触摸变化的xy轴的变化为0，因为当新一轮触摸开始时候，必须重新设置，相当于初始化
+      this.setState({  
           startx : e.targetTouches[0].clientX,
           starty : e.targetTouches[0].clientY,
       });
@@ -41,7 +40,6 @@ class Room extends Component{
   handleMove(e){
   	// e.preventDefault();
   	e.stopPropagation();
-  	// console.log('end:',e.targetTouches[0])
   	this.setState({
   		endx:e.targetTouches[0].clientX,
   		endy:e.targetTouches[0].clientY,
@@ -51,52 +49,43 @@ class Room extends Component{
   	const {startx,starty,endx,endy,documentWidth} =this.state;
   	var deltax = endx - startx;
   	var deltay = endy - starty;
-  	// console.log('deltax:',deltax,'deltay:',deltay,startx,endx,starty,endy)
   	if( Math.abs( deltax ) < 0.3*documentWidth && Math.abs( deltay ) < 0.3*documentWidth )
   		return;
-
   	if( Math.abs( deltax ) >= Math.abs( deltay ) ){
-
-  		if( deltax > 0 ){
-        //move right
-        console.log('move right')
-        this.setState({arrow:'right'});
+  		if( deltax > 0 ){//move right
       }
-      else{
-        //move left
-        console.log('move left')
-        this.setState({arrow:'left'});
-        
+      else{//move left
+        hashHistory.push('/kitchen?animation=righttoleft');
       }
     }
     else{
-    	if( deltay > 0 ){
-        //move down
-        console.log('move down')
-        this.setState({arrow:'down'});
-        
+    	if( deltay > 0 ){ //move down
       }
-      else{
-        //move up
-        console.log('move up')
-        this.setState({arrow:'up'});
-        
+      else{//move up
       }
     }
   }
-
+  handleAir(){
+  	hashHistory.push('/air?animation=righttoleft');
+  }
 	render(){
-		const {lightOpen,curtainsOpen,windowOpen,arrow} =this.state;
-		
+		const {lightOpen,curtainsOpen,windowOpen,airRun} =this.state;
+		const {location} =this.props;
+		let animation=location && location.query && location.query.animation?location.query.animation:'';
+		let airOpen=location && location.query && location.query.airOpen?location.query.airOpen:'';
 		return (
-			<div className="room" 
+			<div className={cs('room',animation?animation:'')} 
 				onTouchStart={e=>this.handleStart(e)} 
 				onTouchMove={e=>this.handleMove(e)} 
 				onTouchEnd={e=>this.handleTouchEnd(e)}>
 				<header>
-					客厅{arrow}
+					客厅
 				</header>
-				<Link to="/" className="q-button-prev"></Link>
+				<Link to="/?animation=lefttoright" className="q-button-prev"></Link>
+				<div className="pagination">
+					<span className="active"></span>
+					<span></span>
+				</div>
 				<div className="page" >
 					<div className={cs('light',lightOpen?'open':'')} onClick={e=>this.toggle(e, 'lightOpen')}>
 						<div className="tips">
@@ -127,12 +116,12 @@ class Room extends Component{
 							<span className="content">音响</span>
 						</div>
 					</div>
-					<div className="air">
+					<div className="air" onClick={this.handleAir}>
 						<div className="tips">
 							<span className="point"></span>
 							<span className="content">空调</span>
 						</div>
-						<div className="wind"></div>
+						<div className={cs('wind',airOpen==='true'?'run':'')}></div>
 					</div>
 					<div className="sofa"></div>
 				</div>

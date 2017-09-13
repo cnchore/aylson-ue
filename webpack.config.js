@@ -12,7 +12,8 @@ module.exports = {
     historyApiFallback: true,//不跳转
     inline: true,//实时刷新
     port:8003,
-    host:'192.168.1.104'
+    // host:'192.168.0.137'
+    host:'192.168.0.142'
   },
   module: {
   	rules: [

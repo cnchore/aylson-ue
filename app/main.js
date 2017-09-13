@@ -2,6 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import Door from './components/Door'
 import Room from './components/Room'
+import Air from './components/Air'
 import Kitchen from './components/Kitchen'
 // import SwiperPage from './components/SwiperPage';
 
@@ -12,6 +13,7 @@ render((
 	  <Route path='/' component={Door}/>
     <Route path='room' component={Room} />
     <Route path='kitchen' component={Kitchen} />
+    <Route path='air' component={Air} />
 	</Router>
 ),document.getElementById('root'));
 // render(<SwiperPage />, document.getElementById('root'));

@@ -45,44 +45,38 @@
 	    padding: .075rem .35rem;
 	    border-radius: 3px;
 	    font-weight: 400;
+	    text-align: center;
+		 	.content:before{
+		    content: '';
+		    position: absolute;
+		    z-index: 1;
+		    left: -12px;
+		    width: 0;
+		    height: 0;
+		    border-width: 3px 9px;
+		    border-style: solid;
+			 	top: 25%;
+			 	border-color: #282828 #282828 transparent transparent;
+			 	transform: rotate(45deg);
+		 }
 	 }
-	 .tips .content:before{
-	    content: '';
-	    position: absolute;
-	    z-index: 1;
-	    top: 50%;
-	    left: -12px;
-	    width: 0;
-	    height: 0;
-	    border-width: 3px 9px;
-	    border-style: solid;
-	    border-color: #282828 #282828 transparent transparent;
-	    transform: rotate(-45deg);
-	 }
-	 .tips .point{
-	     width: 5px;
-	     height: 5px;
-	     background-color: #fff;
-	 }
-	 .tips{
-	 	background-color: #282828;
-	 }
-	 .tips .content:before{
-	 	top: 25%;
-	 	border-color: #282828 #282828 transparent transparent;
-	 	transform: rotate(45deg);
-	 }
+	 
 	 /** 灯**/
 	 .page .light{
-	 	position: absolute;
-	 	top: -.25rem;
-	 	left:50%;
-	 	transform: translate(-50%);
-	 	width: 5rem;
-	 	height: 12.3125rem;
-	 	background: url('images/light.png') no-repeat;
-	 	background-size: cover;
-	 	z-index: 5;
+		 	position: absolute;
+		 	top: -.25rem;
+		 	left:50%;
+		 	transform: translate(-50%);
+		 	width: 5rem;
+		 	height: 12.3125rem;
+		 	background: url('images/light.png') no-repeat;
+		 	background-size: cover;
+		 	z-index: 5;
+		 	transition: background .5s;
+	 		&.open{
+	 			background: url('images/light-open.png') no-repeat;
+		 		background-size: cover;
+	 		}
 	 }
 	 .light .tips{
 	 	left:auto;
@@ -100,35 +94,56 @@
 		background: url('images/scenery.png') no-repeat;
 		background-size: cover;
 		border: 0.25rem solid #fff;
-	}
-	.window .left,
-	.window .right{
-		position: absolute;
-		width: ~'calc(50% - 0.125rem)';
-		height: 100%;
-		background: url('images/win.png');
-		background-size: cover;
-	}
-	.window .left{
-		left: 0;
-	}
-	.window .right{
-		right: 0;
-	}
-	.window .frame{
-		height: 100%;
-		width: 0.3rem;
-		background-color: #fff;
-		position: absolute;
-		top: 0;
-		left: 50%;
-		transform: translate(-50%);
-	}
-	.window .tips{
-		left: ~'calc(100% + 6px)';
-    top: auto;
-    bottom: 15%;
-    width: ~'calc(.75rem * 3 + .7rem)';
+		perspective:300;
+    perspective-origin:50% top;
+		.left,
+		.right{
+			position: absolute;
+			width: ~'calc(50% - 0.125rem)';
+			height: 100%;
+			background: url('images/win.png');
+			background-size: cover;
+		}
+		.left{
+			left: 0;
+			&.open{
+          transition:transform 2s,transform-origin .5s;
+          transform-origin:50% top;
+          transform:skewX(-9deg) rotateX(-60deg);
+      }
+      &.close{
+          transition:transform 2s,transform-origin 8s;
+      }
+		}
+		.right{
+			right: 0;
+			&.open{
+          transition:transform 2s,transform-origin .5s;
+          transform-origin:50% top;
+          transform:skewX(9deg) rotateX(-60deg);
+      }
+      &.close{
+          transition:transform 2s,transform-origin 8s;
+      }
+		}
+		.frame{
+			height: 100%;
+			width: 0.3rem;
+			background-color: #fff;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translate(-50%);
+		}
+		.tips{
+			left: ~'calc(100% + 6px)';
+	    top: auto;
+	    bottom: 15%;
+	    width: ~'calc(.9rem * 3 + .7rem)';
+	    .point{
+	    	left: -25%;
+	    }
+		}
 	}
 	/*抽风机*/
 	.fan{
@@ -139,14 +154,32 @@
 		height: 2rem;
 		border: 0.125rem solid #ccc8c9;
 		border-radius: 50%;
-		background: url('images/fan.png') no-repeat;
-		background-size: cover;
-	}
-	.fan .tips{
-		left:~'calc(50% + 6px)';
-		top:100%;
-		width: ~'calc(.75rem * 3 + .7rem)';
-		z-index: 6;
+		i{
+			overflow: hidden;
+			position: absolute;
+			left: 0;
+			top:0;
+			width: 100%;
+			height: 100%;
+			background: url('images/fan.png') no-repeat;
+			background-size: cover;
+		}
+		&.open>i{
+			animation: fanrun .3s infinite linear;
+		}
+		@keyframes fanrun{
+			0% {transform: rotate(0deg);}
+			100% {transform: rotate(360deg);}
+		}
+		.tips{
+			left:~'calc(50% + 6px)';
+			top:100%;
+			width: ~'calc(.9rem * 3 + .7rem)';
+			z-index: 6;
+			.point{
+				left: -25%;
+			}
+		}
 	}
 	/*送风机*/
 	.air-blower{
@@ -158,18 +191,32 @@
 		background: url('images/airBlower.png') no-repeat,#9d948d;
 		background-position: top 1.625rem right -0.125rem,top left;
 		background-size: 1rem 1.9375rem,100% 100%;
-	}
-	.air-blower .tips{
-		left:auto;
-		top:~'calc(1.625rem + 1.9375rem - 6px)';
-		right: ~'calc(1rem + 6px)';
-		width: ~'calc(.75rem * 3 + .7rem)';
-	}
-	.air-blower .tips .content:before{
-		left: auto;
-		right: -12px;
-		border-color: transparent transparent #282828 #282828 ;
-	  transform: rotate(-45deg);
+		&:before{
+			position: absolute;
+			content: '';
+			top:4.0625rem/3;
+			left: -50%;
+			width: 80/32rem;
+			height: 62/32rem;
+			background: transparent url('images/gas.png') 0 0 no-repeat;
+			background-size: cover;
+		}
+		.tips{
+			left:auto;
+			top:~'calc(1.625rem + 1.9375rem - 6px)';
+			right: ~'calc(1rem + 6px)';
+			width: ~'calc(.9rem * 3 + .7rem)';
+			.content:before{
+				left: auto;
+				right: -12px;
+				border-color: transparent transparent #282828 #282828 ;
+			  transform: rotate(-45deg);
+			}
+			.point{
+				left: auto;
+				right: -12px;
+			}
+		}
 	}
 	/*冰箱*/
 	.fridge{
@@ -180,14 +227,17 @@
 		height: 12.375rem;
 		background: url('images/fridge.png') no-repeat;
 		background-size: cover;
-	}
-	.fridge .tips{
-		left:~'calc(100% + 5px)';
-		width: ~'calc(.75rem * 2 + .7rem)';
-	}
-	.fridge .tips .content:before{
-		transform: rotate(-45deg);
-		top:50%;
+		.tips{
+			left:~'calc(100% + 5px)';
+			width: ~'calc(.9rem * 2 + .7rem)';
+			.content:before{
+				transform: rotate(-45deg);
+				top:50%;
+			}
+			.point{
+				top:50%;
+			}
+		}
 	}
 	/*橱柜*/
 	.cupboard{
@@ -200,96 +250,100 @@
 		background-position: top left,top 5.5625rem left,top 9.75rem left;
 		background-size: 5.5625rem 100%,4.1875rem 100%,4.625rem 100%;
 		
-	}
-	/*上门框*/
-	.cupboard .top.frame{
-		background: linear-gradient(to right,
-			transparent 25%, #beb7b1 0,
-			#beb7b1 ~'calc(25% + 0.0625rem)',transparent 0,
-			transparent 50%, #beb7b1 0,
-			#beb7b1 ~'calc(50% + 0.0625rem)',transparent 0,
-		  transparent 75%, #beb7b1 0,
-			#beb7b1 ~'calc(75% + 0.0625rem)',transparent 0);
-		background-size: 100% 0.0625rem;
-		width: 100%;
-		height: 5.5625rem;
-	}
-	/*灯带*/
-	.cupboard .light-belt{
-		position: absolute;
-		top: 5.25rem;
-		left: 0;
-		right: 0;
-		height: 0.3125rem;
-		background-color: #fff;
-		box-shadow:inset 0px 0px 2px #ddd,
-							 inset 0px 0px 4px transparent,
-							 inset 0px 0px 6px #ddd;
-	}
-	.light-belt .tips{
-		left: 65%;
-		top:0.5125rem;
-	}
-	/*开关*/
-	.cupboard .btn{
-		position: absolute;
-		top: 6.5625rem;
-		left:0.875rem;
-		width: 1.625rem;
-		height: 0.875rem;
-		background: url('images/btn.png') no-repeat;
-		background-size: cover;
-	}
-	/*水龙头*/
-	.cupboard .water-tap{
-		position: absolute;
-		bottom:4.6875rem;
-		left: 8.8125rem;
-		width: 3.125rem;
-		height: 2.5rem;
-		background: url('images/waterTap.png') no-repeat;
-		background-size: cover;
-	}
-	/*下门框*/
-	.cupboard .bottom.frame{
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		background: linear-gradient(to right,
-			transparent 50%, #beb7b1 0,
-			#beb7b1 ~'calc(50% + 0.0625rem)',transparent 0,
-		  transparent 75%, #beb7b1 0,
-			#beb7b1 ~'calc(75% + 0.0625rem)',transparent 0);
-		background-size: 100% 0.0625rem;
-		width: 100%;
-		height: 4.625rem;
-	}
-	.cupboard .bottom.frame:before{
-		background-color: #a5a6a5;
-		position: absolute;
-		content: '';
-		left: 0;
-		top:-0.3125rem;
-		right: 0;
-		height: 0.25rem;
-	}
-	.cupboard .bottom.frame:after{
-		content: '';
-		position: absolute;
-		height: 0.0625rem;
-		background-color: #beb7b1;
-		width: 50%;
-		top:1.25rem;
-		left: 0;
-	}
-	/*底线*/
-	.cupboard .bottom-line{
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		height: 0.25rem;
-		background-color: #fff;
+		/*上门框*/
+		.top.frame{
+			background: linear-gradient(to right,
+				transparent 25%, #beb7b1 0,
+				#beb7b1 ~'calc(25% + 0.0625rem)',transparent 0,
+				transparent 50%, #beb7b1 0,
+				#beb7b1 ~'calc(50% + 0.0625rem)',transparent 0,
+			  transparent 75%, #beb7b1 0,
+				#beb7b1 ~'calc(75% + 0.0625rem)',transparent 0);
+			background-size: 100% 0.0625rem;
+			width: 100%;
+			height: 5.5625rem;
+		}
+		/*灯带*/
+		.light-belt{
+			position: absolute;
+			top: 5.25rem;
+			left: 0;
+			right: 0;
+			height: 0.3125rem;
+			background-color: #fff;
+			box-shadow:inset 0px 0px 2px #ddd,
+								 inset 0px 0px 4px transparent,
+								 inset 0px 0px 6px #ddd;
+			.tips{
+				left: 65%;
+				top:0.5125rem;
+				.point{
+					top:-5px;
+					left: -45%;
+				}
+			}
+		}
+		/*开关*/
+		.btn{
+			position: absolute;
+			top: 6.5625rem;
+			left:0.875rem;
+			width: 1.625rem;
+			height: 0.875rem;
+			background: url('images/btn.png') no-repeat;
+			background-size: cover;
+		}
+		/*水龙头*/
+		.water-tap{
+			position: absolute;
+			bottom:4.6875rem;
+			left: 8.8125rem;
+			width: 3.125rem;
+			height: 2.5rem;
+			background: url('images/waterTap.png') no-repeat;
+			background-size: cover;
+		}
+		/*下门框*/
+		.bottom.frame{
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			background: linear-gradient(to right,
+				transparent 50%, #beb7b1 0,
+				#beb7b1 ~'calc(50% + 0.0625rem)',transparent 0,
+			  transparent 75%, #beb7b1 0,
+				#beb7b1 ~'calc(75% + 0.0625rem)',transparent 0);
+			background-size: 100% 0.0625rem;
+			width: 100%;
+			height: 4.625rem;
+			&:before{
+				background-color: #a5a6a5;
+				position: absolute;
+				content: '';
+				left: 0;
+				top:-0.3125rem;
+				right: 0;
+				height: 0.25rem;
+			}
+			&:after{
+				content: '';
+				position: absolute;
+				height: 0.0625rem;
+				background-color: #beb7b1;
+				width: 50%;
+				top:1.25rem;
+				left: 0;
+			}
+		}
+		/*底线*/
+		.bottom-line{
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			height: 0.25rem;
+			background-color: #fff;
+		}
 	}
 	/*抽烟机*/
 	.smoke-machine{
@@ -299,37 +353,54 @@
 		width: 3.5625rem;
 		height: 18.6875rem;
 		background-color: #e5e4e2;
-		z-index: 1
-	}
-	.smoke-machine:after{
-		content: '';
-		position: absolute;
-		height: 5rem;
-		left: 0;
-		bottom: 0;
-		right: 0;
-		background-color: #7f818e;
-	}
-	.smoke-machine .machine{
-		position: absolute;
-		left: -1.25rem;
-	  top: 0;
-		width: 5.9375rem;
-		height: 11.8125rem;
-		background: url('images/smokeMachine.png') no-repeat;
-		background-size: cover;
-	}
-	.smoke-machine .machine .tips{
-		top:~'calc(100% - 6px)';
-		left:auto;
-		right: ~'calc(100% + 12px)';
-		width: ~'calc(.75rem * 3 + .7rem)';
-	}
-	.smoke-machine .machine .tips .content:before{
-		left: auto;
-		right: -12px;
-		transform: rotate(-45deg);
-		border-color: transparent transparent #282828 #282828;
+		z-index: 1;
+		&:after{
+			content: '';
+			position: absolute;
+			height: 5rem;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			background-color: #7f818e;
+		}
+		.machine{
+			position: absolute;
+			left: -1.25rem;
+		  top: 0;
+			width: 5.9375rem;
+			height: 11.8125rem;
+			background: url('images/smokeMachine.png') no-repeat;
+			background-size: cover;
+			&.open{
+				&:before{
+					position: absolute;
+					content: '';
+					bottom: -76/32rem;
+					left: -.5rem;
+					width: 206/32rem;
+					height: 76/32rem;
+					background: transparent url('images/油烟机灯.png') 0 0 no-repeat;
+					background-size: cover;
+				}
+			}
+			.tips{
+				top:~'calc(100% - 6px)';
+				left:auto;
+				right: ~'calc(100% + 12px)';
+				width: ~'calc(.9rem * 3 + .7rem)';
+				.content:before{
+					left: auto;
+					right: -12px;
+					transform: rotate(-45deg);
+					border-color: transparent transparent #282828 #282828;
+				}
+				.point{
+					left: auto;
+					right: -16px;
+					top:10%;
+				}
+			}
+		}
 	}
 	/*操作台墙*/
 	.console-wall{
@@ -360,14 +431,14 @@
 		height: 1.53125rem;
 		background-color: #ccc8c9;
 		z-index: 1;
-	}
-	.console .top{
-		position: absolute;
-		top:-0.3125rem;
-		width: 8rem;
-		left: -0.9375rem;
-		height: 0.3125rem;
-		background-color: #343331;
+		.top{
+			position: absolute;
+			top:-0.3125rem;
+			width: 8rem;
+			left: -0.9375rem;
+			height: 0.3125rem;
+			background-color: #343331;
+		}
 	}
 	/*餐桌*/
 	.dining-table{
@@ -378,14 +449,14 @@
 		height: 6.3125rem;
 		background-color: #fbfbfb;
 		z-index: 1;
-	}
-	.dining-table .top{
-		position: absolute;
-		top: -0.3125rem;
-		right: 0;
-		left: -0.9375rem;
-		height: 0.3125rem;
-		background-color: #343331;
+		.top{
+			position: absolute;
+			top: -0.3125rem;
+			right: 0;
+			left: -0.9375rem;
+			height: 0.3125rem;
+			background-color: #343331;
+		}
 	}
 	/*健康食谱*/
 	.recipes{
@@ -397,18 +468,23 @@
 		background: url('images/recipes.png') no-repeat;
 		background-size: cover;
 		z-index: 1;
-	}
-	.recipes .tips{
-		left:auto;
-		right: 5.5625rem;
-		width: ~'calc(0.75rem * 4 + .7rem)';
-	}
-	.recipes .tips .content:before{
-		left: auto;
-		right: -12px;
-		top:50%;
-		border-color: transparent transparent #282828 #282828 ;
-	  transform: rotate(45deg);
+		.tips{
+			left:auto;
+			right: 5.5625rem;
+			width: ~'calc(.9rem * 4 + .7rem)';
+			.content:before{
+				left: auto;
+				right: -12px;
+				top:50%;
+				border-color: transparent transparent #282828 #282828 ;
+			  transform: rotate(45deg);
+			}
+			.point{
+				left: auto;
+				right: -12px;
+				top:100%;
+			}
+		}
 	}
 	.stool1{
 		position: absolute;
@@ -460,44 +536,71 @@
 		height: 13.75rem;
 		background: rgba(40,40,40,.45);
 		padding: .625rem 0.78125rem;
-	}
-	.model .icon {
-		margin: .625rem 0.78125rem;
-		width: ~'calc(33.33% - 1.5625rem)';
-		height: 2rem;
-		line-height: 2rem;
-		float: left;
-		font-size: 0.75rem;
-		color: #fff;
-		padding-left: 2.3125rem;
-		background-size: 2rem 2rem;
-		background-repeat: no-repeat;
-		text-align: left;
-    text-indent: 0.3125rem;
-	}
-
-	.model .icon.btn-fridge{
-		background-image: url('images/control/fridge.png');
-	}
-	.model .icon.btn-light{
-		background-image: url('images/control/light.png');
-	}
-	.model .icon.btn-smoke-machine{
-		background-image: url('images/control/smoke-m.png');
-	}
-	.model .icon.btn-fan{
-		background-image: url('images/control/fan.png');
-	}
-	.model .icon.btn-air-blower{
-		background-image: url('images/control/air-blower.png');
-	}
-	.model .icon.btn-light-belt{
-		background-image: url('images/control/light-belt.png');
-	}
-	.model .icon.btn-win{
-		background-image: url('images/control/win.png');
-	}
-	.model .icon.btn-recipes{
-		background-image: url('images/control/recipes.png');
+		.icon {
+			margin: .625rem 0.78125rem;
+			width: ~'calc(33.33% - 1.5625rem)';
+			height: 2rem;
+			line-height: 2rem;
+			float: left;
+			font-size: 0.75rem;
+			color: #fff;
+			padding-left: 2.3125rem;
+			background-size: 2rem 2rem;
+			background-repeat: no-repeat;
+			text-align: left;
+	    text-indent: 0.3125rem;
+	    transition: all .5s;
+			&.btn-fridge{
+				background-image: url('images/control/fridge.png');
+				&.unactive{
+					background-image: url('images/control/fridge1.png');
+				}
+			}
+			&.btn-light{
+				background-image: url('images/control/light.png');
+				&.unactive{
+					background-image: url('images/control/light1.png');
+				}
+			}
+			&.btn-smoke-machine{
+				background-image: url('images/control/smoke-m.png');
+				&.unactive{
+					background-image: url('images/control/smoke-m1.png');
+				}
+			}
+			&.btn-fan{
+				background-image: url('images/control/fan.png');
+				&.unactive{
+					background-image: url('images/control/fan1.png');
+				}
+			}
+			&.btn-air-blower{
+				background-image: url('images/control/air-blower.png');
+				&.unactive{
+					background-image: url('images/control/air-blower1.png');
+				}
+			}
+			&.btn-light-belt{
+				background-image: url('images/control/light-belt.png');
+				&.unactive{
+					background-image: url('images/control/light-belt1.png');
+				}
+			}
+			&.btn-win{
+				background-image: url('images/control/win.png');
+				&.unactive{
+					background-image: url('images/control/win1.png');
+				}
+			}
+			&.btn-recipes{
+				background-image: url('images/control/recipes.png');
+				&.unactive{
+					background-image: url('images/control/recipes1.png');
+				}
+			}
+		}
+		.unactive{
+			opacity: .6;
+		}
 	}
  }

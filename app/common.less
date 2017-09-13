@@ -34,7 +34,7 @@ html, body, div, span, applet, object, iframe,
     line-height: initial;
     position: relative;
     height: 100%;
-   overflow: hidden;
+    overflow: hidden;
  }
 html *{
     -webkit-font-smoothing: antialiased;
@@ -49,6 +49,13 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+#root{
+    width: 100%;
+    height: 100%;
+    position: relative;
     overflow: hidden;
 }
 a{
@@ -152,11 +159,141 @@ a{
     position: absolute;
     z-index: 10;
 }
-.demo-wrapper{
-    animation: showdelay 2s;
+.color-white{
+    color: #fff;
 }
-@keyframes showdelay{
-    0% {opacity: 0;transform:translate3d(100%,0,0); }
-    50% {opacity: 0.5;transform:translate3d(50%,0,0);}
-    50% {opacity: 1;transform:translate3d(0,0,0);}
+.righttoleft{
+    animation: showrighttoleft .8s;
+}
+
+@keyframes showrighttoleft{
+    0% {transform:translate3d(100%,0,0); }
+    100% {transform:translate3d(0,0,0);}
+}
+.lefttoright{
+    animation: showlefttoright .8s;
+}
+
+@keyframes showlefttoright{
+    0% {transform:translate3d(-100%,0,0); }
+    100% {transform:translate3d(0,0,0);}
+}
+.bottomtotop{
+    animation: showbottomtotop .4s;
+}
+
+@keyframes showbottomtotop{
+    0% {transform:translate3d(0,100%,0); }
+    100% {transform:translate3d(0,0,0);}
+}
+.toptobottom{
+    animation: showtoptobottom .4s;
+}
+
+@keyframes showtoptobottom{
+    0% {transform:translate3d(0,0,0); }
+    100% {transform:translate3d(0,100%,0);}
+}
+.show-ani{
+    transition: all .8s;
+}
+@keyframes showanimation{
+    0% {opacity: 0; }
+    100% {opacity: 1;}
+}
+.tips .point{
+    width: 8px;
+    height: 8px;
+    background-color: #1464b5;
+    border-radius: 50%;
+    position: absolute;
+    left: -50%;
+    top: -10%;
+    // animation: halo 1s infinite linear;
+}
+@keyframes halo{
+    0% {box-shadow: 0 0 0 transparent;}
+    50% {box-shadow: 0 0 .5rem darken(#1464b5, 20%);}
+    100% {box-shadow: 0 0 0 transparent;}
+}
+//按钮点击波浪效果
+button,.icon-btn{
+    position: relative;
+    overflow: hidden;
+    &:after{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top:0;
+        left: 0;
+        // border-radius: 50%;
+        pointer-events: none;
+        background-image: radial-gradient(circle,blue 10%,transparent 10.01%);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        transform: scale(6,6);
+        opacity: 0;
+        transition: transform .3s,opacity .5s;
+    }
+    &:active:after{
+        opacity: .3;
+        transform: scale(0,0);
+        transition: 0s;
+    }
+}
+//ant设计风格的按钮点击边框放大效果
+.ant-select{
+    position: relative;
+    //此处不需要设置overflow:hidden,因为after元素需要溢出显示
+    &:focus{
+        outline: none;
+    }
+
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        //扩大伪类元素4个方向各10px
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        pointer-events: none;
+        background-color: #333;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        opacity: 0;
+        transition: all .3s;
+    }
+
+    &:active:after {
+        opacity: .3;
+        //设置初始状态
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: 0s;
+    }
+}
+.pagination{
+    position: absolute;
+    top:26/16rem;
+    left:0;
+    right:0;
+    height: 8px;
+    text-align: center;
+    span{
+        width:5px;
+        height:5px;
+        display: inline-block;
+        border-radius: 50%;
+        margin: 0 2px;
+        background-color: rgba(40, 40, 40, 0.5);
+        &.active{
+            background-color: rgba(0, 0, 255, 0.7);
+        }
+    }
 }
