@@ -12,9 +12,8 @@ class Room extends Component{
 	  	windowOpen:false,
 	  	airRun:false,
 	  	startx:0,
-	  	starty:0,
 	  	endx:0,
-	  	endy:0,
+	  	touched:false,
 	  	documentWidth:window.screen.availWidth,
 	  	animation:'',
 	  };
@@ -30,39 +29,34 @@ class Room extends Component{
     });
   }
   handleStart(e){
+    e.stopPropagation();
+    this.setState({  
+        startx : e.targetTouches[0].clientX,
+        touched:false,
+    });
       // e.preventDefault();
-      e.stopPropagation();
-      this.setState({  
-          startx : e.targetTouches[0].clientX,
-          starty : e.targetTouches[0].clientY,
-      });
   }
   handleMove(e){
-  	// e.preventDefault();
+
   	e.stopPropagation();
   	this.setState({
   		endx:e.targetTouches[0].clientX,
-  		endy:e.targetTouches[0].clientY,
+  		touched:true,
   	})
+  	// e.preventDefault();
   }
   handleTouchEnd (e) {
-  	const {startx,starty,endx,endy,documentWidth} =this.state;
+  	// e.preventDefault();
+  	e.stopPropagation();
+  	const {startx,endx,touched,documentWidth} =this.state;
   	var deltax = endx - startx;
-  	var deltay = endy - starty;
-  	if( Math.abs( deltax ) < 0.3*documentWidth && Math.abs( deltay ) < 0.3*documentWidth )
+  	if(!touched || Math.abs( deltax ) < 0.3*documentWidth)
   		return;
-  	if( Math.abs( deltax ) >= Math.abs( deltay ) ){
-  		if( deltax > 0 ){//move right
-      }
-      else{//move left
-        hashHistory.push('/kitchen?animation=righttoleft');
-      }
+		if( deltax > 0 ){//move right
     }
-    else{
-    	if( deltay > 0 ){ //move down
-      }
-      else{//move up
-      }
+    else{//move left
+    	console.log('move left')
+      hashHistory.push('/kitchen?animation=righttoleft');
     }
   }
   handleAir(){

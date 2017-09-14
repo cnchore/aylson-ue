@@ -4,6 +4,7 @@ import Door from './components/Door'
 import Room from './components/Room'
 import Air from './components/Air'
 import Kitchen from './components/Kitchen'
+import Fridge from './components/Fridge'
 // import SwiperPage from './components/SwiperPage';
 
 import './common.less';
@@ -14,6 +15,7 @@ render((
     <Route path='room' component={Room} />
     <Route path='kitchen' component={Kitchen} />
     <Route path='air' component={Air} />
+    <Route path='fridge' component={Fridge} />
 	</Router>
 ),document.getElementById('root'));
 // render(<SwiperPage />, document.getElementById('root'));

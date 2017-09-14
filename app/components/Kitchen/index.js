@@ -8,9 +8,8 @@ class Kitchen extends Component{
 	
 	  this.state = {
 	  	startx:0,
-	  	starty:0,
 	  	endx:0,
-	  	endy:0,
+	  	touched:false,
 	  	documentWidth:window.screen.availWidth,
 	  	fridgeOpen:false,//冰箱
 			lightOpen:false,//主灯
@@ -27,7 +26,7 @@ class Kitchen extends Component{
       e.stopPropagation();
       this.setState({  
           startx : e.targetTouches[0].clientX,
-          starty : e.targetTouches[0].clientY,
+          touched:false,
       });
   }
   handleMove(e){
@@ -35,32 +34,29 @@ class Kitchen extends Component{
   	e.stopPropagation();
   	this.setState({
   		endx:e.targetTouches[0].clientX,
-  		endy:e.targetTouches[0].clientY,
+  		touched:true,
   	})
   }
   handleTouchEnd (e) {
-  	const {startx,starty,endx,endy,documentWidth} =this.state;
+  	const {startx,endx,touched,documentWidth} =this.state;
   	var deltax = endx - startx;
-  	var deltay = endy - starty;
-  	if( Math.abs( deltax ) < 0.3*documentWidth && Math.abs( deltay ) < 0.3*documentWidth )
+  	if( !touched || Math.abs( deltax ) < 0.3*documentWidth)
   		return;
-  	if( Math.abs( deltax ) >= Math.abs( deltay ) ){
-  		if( deltax > 0 ){//move right
-        hashHistory.push('/room?animation=lefttoright');
-      }
-      else{//move left
-      }
+		if( deltax > 0 ){//move right
+      hashHistory.push('/room?animation=lefttoright');
     }
-    else{
-    	if( deltay > 0 ){ //move down
-      }
-      else{//move up
-      }
+    else{//move left
     }
+    
   }
   toggle(e,field){
 		e.preventDefault();
 		e.stopPropagation();
+		if(field==='fridgeOpen'){
+			hashHistory.push('/fridge?animation=righttoleft')
+			return;
+		}
+
     this.setState({
       [field]: !this.state[field],
     });
@@ -106,7 +102,7 @@ class Kitchen extends Component{
 						</div>
 						<i></i>
 					</div>
-					<div className="air-blower">
+					<div className={cs('air-blower',blowerOpen?'open':'')}>
 						<div className="tips">
 							<span className="point"></span>
 							<span className="content">送风机</span>
@@ -120,7 +116,7 @@ class Kitchen extends Component{
 					</div>
 					<div className="cupboard">
 						<div className="top frame"></div>
-						<div className="light-belt">
+						<div className={cs('light-belt',beltOpen?'open':'')}>
 							<div className="tips">
 							<span className="point"></span>
 							<span className="content">灯带</span>
@@ -133,6 +129,7 @@ class Kitchen extends Component{
 					</div>
 					<div className="smoke-machine">
 						<div className={cs('machine',machineOpen?'open':'')}>
+							<span className="-light"></span>
 							<div className="tips">
 								<span className="point"></span>
 								<span className="content">抽烟机</span>
@@ -158,14 +155,14 @@ class Kitchen extends Component{
 					<div className="stool3"></div>
 					<div className="carpet"></div>
 					<div className="model">
-						<div onClick={e=>this.toggle(e,'fridgeOpen')} className={cs('icon','icon-btn','btn-fridge',fridgeOpen?'':'unactive')}>冰箱</div>
+						<div onClick={e=>this.toggle(e,'fridgeOpen')} className={cs('icon','icon-btn','btn-fridge',fridgeOpen?'':'')}>冰箱</div>
 						<div onClick={e=>this.toggle(e,'lightOpen')} className={cs('icon','icon-btn','btn-light',lightOpen?'':'unactive')}>主灯</div>
 						<div onClick={e=>this.toggle(e,'machineOpen')} className={cs('icon','icon-btn','btn-smoke-machine',machineOpen?'':'unactive')}>抽烟机</div>
 						<div onClick={e=>this.toggle(e,'fanOpen')} className={cs('icon','icon-btn','btn-fan',fanOpen?'':'unactive')}>抽风机</div>
 						<div onClick={e=>this.toggle(e,'blowerOpen')} className={cs('icon','icon-btn','btn-air-blower',blowerOpen?'':'unactive')}>送风机</div>
 						<div onClick={e=>this.toggle(e,'beltOpen')} className={cs('icon','icon-btn','btn-light-belt',beltOpen?'':'unactive')}>灯带</div>
 						<div onClick={e=>this.toggle(e,'winOpen')} className={cs('icon','icon-btn','btn-win',winOpen?'':'unactive')}>电动窗</div>
-						<div onClick={e=>this.toggle(e,'recipesOpen')} className={cs('icon','icon-btn','btn-recipes',recipesOpen?'':'unactive')}>健康食谱</div>
+						<div onClick={e=>this.toggle(e,'recipesOpen')} className={cs('icon','icon-btn','btn-recipes',recipesOpen?'':'')}>健康食谱</div>
 					</div>
 				</div>
 			</section>

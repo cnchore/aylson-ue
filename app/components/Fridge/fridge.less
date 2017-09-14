@@ -1,0 +1,203 @@
+/*********
+ * fridge
+ **********/
+ 
+ section.fridge{
+ 	background: #fff;
+ 	width: 100%;
+ 	height: 100%;
+
+ }
+ .fridge{
+ 	header{
+ 		height: 2.8125rem;
+ 		line-height: 2.8125rem;
+ 		width: 100%;
+ 		color: #000;
+ 		font-size: 1.125rem;
+ 		text-align: center;
+ 	}
+
+ 	.page{
+ 		height: 100%;
+ 		width: 100%;
+ 		position: relative;
+ 		background: url('images/bg.jpg') no-repeat,#fff;
+ 		background-position: top left,top 21.5625rem left;
+ 		-webkit-background-size: 100% 21.5625rem,100% 100%;
+ 		background-size: 100% 21.5625rem,100% 100%;
+ 		/*信息展示*/
+ 		.out{
+ 			position: absolute;
+ 			left: 0;
+ 			right: 0;
+ 			top:9.46875rem;
+ 			height:12.125rem; 
+ 			background-color: rgba(0,0,0,.4);
+ 			color: #fff;
+
+ 			.left,
+ 			.right{
+ 				width: 50%;
+ 				height: 100%;
+ 				float: left;
+ 			}
+ 			.left{
+ 				width: calc(50% - 1px);
+ 				padding: 1.875rem;
+ 				border-right: 1px solid rgba(160,158,157,.4);
+ 				display: -webkit-box;
+ 				-webkit-box-pack:center;
+ 				-webkit-box-align:center;
+ 				-webkit-box-orient:vertical;
+ 			}
+ 		}
+
+	 	.title{
+	 		letter-spacing: 1px;
+	 		font-size: 1.875rem;
+		 	sup{
+		 		font-size: 1rem;
+		 		font-weight: 200;
+		 		vertical-align: super;
+		 	}
+	 	}
+	 	.desc{
+	 		font-size: 0.75rem;
+	 		color: #cecdcd;
+	 	}
+	 	.right{
+	 		height: 100%;
+	 		text-align: center;
+	 	}
+
+	 	.left:before,
+	 	.top:before,
+	 	.bottom:before{
+	 		content: '';
+	 		position: absolute;
+	 		width: 18px;
+	 		height: 18px;
+	 		border-right: 1px solid rgba(160,158,157,1);
+	 		transform: rotate(45deg);
+	 	}
+	 	.left:before{
+	 		top:50%;
+	 		left: calc(50% - 18px - 1.875rem);
+	 	}
+	 	.top:before{
+	 		top:25%;
+	 		left: calc(100% - 18px - 1.875rem);
+	 	}
+	 	.bottom:before{
+	 		top:75%;
+	 		left: calc(100% - 18px - 1.875rem);
+	 	}
+	 	.left:after,
+	 	.top:after,
+	 	.bottom:after{
+	 		content: '';
+	 		position: absolute;
+	 		width: 18px;
+	 		height: 18px;
+	 		border-right: 1px solid rgba(160,158,157,1);
+	 		transform: rotate(-45deg);
+	 	}
+	 	.left:after{
+	 		top:50%;
+	 		left: calc(50% - 18px - 1.875rem);
+	 	}
+	 	.top:after{
+	 		top:25%;
+	 		left: calc(100% - 18px - 1.875rem);
+	 	}
+	 	.bottom:after{
+	 		top:75%;
+	 		left: calc(100% - 18px - 1.875rem);
+	 	}
+	 	.top,.bottom{
+	 		height: 50%;
+	 		padding-top: 0.625rem;
+	 		padding-bottom: 0.625rem;
+	 	}
+	 	.right:before{
+	 		position: absolute;
+	 		content: '';
+	 		top:50%;
+	 		left: calc(50% - 1px);
+	 		right: 0;
+	 		height: 1px;
+	 		background-color: rgba(160,158,157,.4);
+	 		/*border-right: 1px solid rgba(160,158,157,.4);*/
+	 	}
+	 	/*中控*/
+	 	.model{
+	 		position: absolute;
+	 		left: 0;
+	 		right: 0;
+	 		bottom: 0;
+	 		height: 16.09375rem;
+			.icon{
+				margin: 0.9375rem;
+				float: left;
+				width: 3.875rem;
+				height: 3.875rem;
+				font-size: 0.75rem;
+				color: #989898;
+				padding-top: 4.75rem;
+				background-size: 3.875rem 3.875rem;
+				background-repeat: no-repeat;
+				text-align: center;
+				position: relative;
+				transition: all .5s;
+				&:after{
+	        content: '';
+	        display: block;
+	        position: absolute;
+	        width: 100%;
+	        height: 100%;
+	        top:-10%;
+	        left: 0;
+	        // border-radius: 50%;
+	        pointer-events: none;
+	        background-image: radial-gradient(circle,blue 10%,transparent 10.01%);
+	        background-repeat: no-repeat;
+	        background-position: 50%;
+	        transform: scale(6,6);
+	        opacity: 0;
+	        transition: transform .3s,opacity .5s;
+		    }
+		    &:active:after{
+		        opacity: .3;
+		        transform: scale(0,0);
+		        transition: 0s;
+		    }
+			}
+			.btn-0-fresh{
+				background-image: url('images/0-fresh.png');
+				&.open{
+					background-image: url('images/0-fresh1.png');
+				}
+			}
+			.btn-fresh{
+				background-image: url('images/fresh.png');
+				&.open{
+					background-image: url('images/fresh1.png');
+				}
+			}
+			.btn-freeze{
+				background-image: url('images/freeze.png');
+				&.open{
+					background-image: url('images/freeze1.png');
+				}
+			}
+			.btn-lock{
+				background-image: url('images/lock.png');
+				&.open{
+					background-image: url('images/lock1.png');
+				}
+			}
+		}
+ 	}
+
+} 
