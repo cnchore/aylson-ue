@@ -26,36 +26,45 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.css$/,
-                use: [
-                    {
-                        loader: "style-loader"
-                    }, {
-                        loader: "css-loader",
-                        options: {
-                            modules: true
-                        }
-                    }, {
-                        loader: "postcss-loader"
+            test: /\.css$/,
+            use: [
+                {
+                    loader: "style-loader"
+                }, {
+                    loader: "css-loader",
+                    options: {
+                        modules: true
                     }
-                ]
+                }, {
+                    loader: "postcss-loader"
+                }
+            ]
             },
             {
-                test: /\.less$/,
-                use: [
-                    {
-                        loader: "style-loader"
-                    }, {
-                        loader: "css-loader"
-                    }, {
-                        loader: "postcss-loader"
-                    },{
+            test: /\.less$/,
+            use: [
+                {
+                    loader: "style-loader"
+                }, {
+                    loader: "css-loader"
+                }, {
+                    loader: "postcss-loader"
+                },{
                         loader: "less-loader"
-                    }
-                ]
+                }
+            ]
+            },{
+              test: /\.(eot|woff|svg|ttf|woff2|gif|appcache)(\?|$)/,
+              exclude: /node_modules/,
+              use: ['file-loader?name=[name].[ext]']
+          }, {
+              test: /\.(png|jpg|gif)$/,
+              exclude: /node_modules/,
+              use: ['url-loader?limit=8192&name=images/[hash:8].[name].[ext]']
             }
+
         ]
-    },
+      },
     plugins: [
         new webpack.BannerPlugin('版权所有，翻版必究'),
         new HtmlWebpackPlugin({
