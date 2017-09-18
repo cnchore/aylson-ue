@@ -100,17 +100,23 @@ class Fridge extends Component{
 				<div className="page">
 					<div className="out">
 						<div className="left" onClick={e=>this.handerTemperature('coldStorageModelVisable','tempColdStorage','coldStorage')}>
-							<div className="title">{coldStorage}<sup>o</sup></div>
-							<div className="desc">冷藏室</div>
+							<div className="content">
+								<div className="title">{coldStorage}<sup>o</sup></div>
+								<div className="desc">冷藏室</div>
+							</div>
 						</div>
 						<div className="right">
 							<div className="top" onClick={e=>this.handerTemperature('freezingModelVisable','tempFreezing','freezing')}>
-								<div className="title">{freezing}<sup>o</sup></div>
-								<div className="desc">冷冻室</div>
+								<div className="content">
+									<div className="title">{freezing}<sup>o</sup></div>
+									<div className="desc">冷冻室</div>
+								</div>
 							</div>
 							<div className="bottom" onClick={e=>this.handerTemperature('temperatureModelVisable','tempTemperature','temperature')}>
-								<div className="title">{temperature}<sup>o</sup></div>
-								<div className="desc">变温室</div>
+								<div className="content">
+									<div className="title">{temperature}<sup>o</sup></div>
+									<div className="desc">变温室</div>
+								</div>
 							</div>
 						</div>
 					</div>

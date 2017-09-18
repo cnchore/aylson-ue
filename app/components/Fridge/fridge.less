@@ -41,95 +41,72 @@
  				width: 50%;
  				height: 100%;
  				float: left;
+ 				
  			}
  			.left{
  				width: calc(50% - 1px);
  				padding: 1.875rem;
- 				border-right: 1px solid rgba(160,158,157,.4);
+ 				border-right: 1px solid rgba(238, 238, 238, 0.5);
  				display: -webkit-box;
  				-webkit-box-pack:center;
  				-webkit-box-align:center;
  				-webkit-box-orient:vertical;
  			}
+ 			.right{
+ 				.top,.bottom{
+			 		height: 50%;
+			 		// padding-top: 0.625rem;
+			 		// padding-bottom: 0.625rem;
+			 		display: -webkit-box;
+	 				-webkit-box-pack:center;
+	 				-webkit-box-align:center;
+	 				-webkit-box-orient:vertical;
+			 	}
+ 			}
+			.content{
+				width: 100%;
+				display: -webkit-box;
+ 				-webkit-box-pack:center;
+ 				-webkit-box-align:center;
+ 				-webkit-box-orient:vertical;
+				position: relative;
+			 	.title{
+			 		letter-spacing: 1px;
+			 		font-size: 1.875rem;
+				 	sup{
+				 		font-size: 1rem;
+				 		font-weight: 200;
+				 		vertical-align: super;
+				 	}
+			 	}
+			 	.desc{
+			 		font-size: 0.75rem;
+			 		color: #cecdcd;
+			 	}
+			 	&:before{
+				 	content: '';
+			 		position: absolute;
+			 		top: 50%;
+			 		right: 20px;
+			 		width: 16px;
+			 		height: 16px;
+			 		border-right: 1px solid rgba(238, 238, 238, 0.7);
+			 		transform: rotate(45deg);
+			 	}
+			 	&:after{
+			 		content: '';
+			 		position: absolute;
+			 		top: 50%;
+			 		right: 20px;
+			 		width: 16px;
+			 		height: 16px;
+			 		border-right: 1px solid rgba(238, 238, 238, 0.7);
+			 		transform: rotate(-45deg);
+			 	}
+			}
+		 	
  		}
 
-	 	.title{
-	 		letter-spacing: 1px;
-	 		font-size: 1.875rem;
-		 	sup{
-		 		font-size: 1rem;
-		 		font-weight: 200;
-		 		vertical-align: super;
-		 	}
-	 	}
-	 	.desc{
-	 		font-size: 0.75rem;
-	 		color: #cecdcd;
-	 	}
-	 	.right{
-	 		height: 100%;
-	 		text-align: center;
-	 	}
-
-	 	.left:before,
-	 	.top:before,
-	 	.bottom:before{
-	 		content: '';
-	 		position: absolute;
-	 		width: 18px;
-	 		height: 18px;
-	 		border-right: 1px solid rgba(160,158,157,1);
-	 		transform: rotate(45deg);
-	 	}
-	 	.left:before{
-	 		top:50%;
-	 		left: calc(50% - 18px - 1.875rem);
-	 	}
-	 	.top:before{
-	 		top:25%;
-	 		left: calc(100% - 18px - 1.875rem);
-	 	}
-	 	.bottom:before{
-	 		top:75%;
-	 		left: calc(100% - 18px - 1.875rem);
-	 	}
-	 	.left:after,
-	 	.top:after,
-	 	.bottom:after{
-	 		content: '';
-	 		position: absolute;
-	 		width: 18px;
-	 		height: 18px;
-	 		border-right: 1px solid rgba(160,158,157,1);
-	 		transform: rotate(-45deg);
-	 	}
-	 	.left:after{
-	 		top:50%;
-	 		left: calc(50% - 18px - 1.875rem);
-	 	}
-	 	.top:after{
-	 		top:25%;
-	 		left: calc(100% - 18px - 1.875rem);
-	 	}
-	 	.bottom:after{
-	 		top:75%;
-	 		left: calc(100% - 18px - 1.875rem);
-	 	}
-	 	.top,.bottom{
-	 		height: 50%;
-	 		padding-top: 0.625rem;
-	 		padding-bottom: 0.625rem;
-	 	}
-	 	.right:before{
-	 		position: absolute;
-	 		content: '';
-	 		top:50%;
-	 		left: calc(50% - 1px);
-	 		right: 0;
-	 		height: 1px;
-	 		background-color: rgba(160,158,157,.4);
-	 		/*border-right: 1px solid rgba(160,158,157,.4);*/
-	 	}
 	 	/*中控*/
 	 	.model{
 	 		position: absolute;

@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import './room'
 import cs from 'classnames'
 import {Link,hashHistory} from 'react-router'
+
 class Room extends Component{
 	constructor(props) {
 	  super(props);
@@ -119,6 +120,7 @@ class Room extends Component{
 					</div>
 					<div className="sofa"></div>
 				</div>
+				<div className="q-mask"></div>
 			</div>
 		)
 	}
