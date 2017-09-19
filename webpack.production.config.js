@@ -54,11 +54,11 @@ module.exports = {
                 }
             ]
             },{
-              test: /\.(eot|woff|svg|ttf|woff2|gif|appcache)(\?|$)/,
+              test: /\.(eot|woff|svg|ttf|woff2|gif|appcache|mp3)(\?|$)/,
               exclude: /node_modules/,
               use: ['file-loader?name=[name].[ext]']
           }, {
-              test: /\.(png|jpg|gif)$/,
+              test: /\.(png|jpg|gif|jpeg)$/,
               exclude: /node_modules/,
               use: ['url-loader?limit=8192&name=images/[hash:8].[name].[ext]']
             }

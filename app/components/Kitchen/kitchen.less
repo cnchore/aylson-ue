@@ -50,14 +50,14 @@
 		    content: '';
 		    position: absolute;
 		    z-index: 1;
-		    left: -12px;
+		    left: -8px;
 		    width: 0;
 		    height: 0;
-		    border-width: 3px 9px;
+		    border-width: 3px 6px;
 		    border-style: solid;
 			 	top: 25%;
 			 	border-color: #282828 #282828 transparent transparent;
-			 	transform: rotate(45deg);
+			 	transform: rotate(30deg);
 		 }
 	 }
 	 
@@ -77,13 +77,17 @@
 	 			background: url('images/light-open.png') no-repeat;
 		 		background-size: cover;
 	 		}
+		 .tips{
+			 	left:auto;
+			 	top:auto;
+			 	right: -1.6rem;
+			 	bottom: .2rem;
+			 	.point{
+			 		left: -8/16rem;
+			 		top:0px;
+			 	}
+		 }	
 	 }
-	 .light .tips{
-	 	left:auto;
-	 	top:auto;
-	 	right: -1.6rem;
-	 	bottom: .2rem;
-	 }	
 	/*窗户*/
 	.window{
 		position: absolute;
@@ -142,7 +146,8 @@
 	    bottom: 15%;
 	    width: ~'calc(.9rem * 3 + .7rem)';
 	    .point{
-	    	left: -25%;
+	    	left: -8/16rem;
+				top:0;
 	    }
 		}
 	}
@@ -178,7 +183,8 @@
 			width: ~'calc(.9rem * 3 + .7rem)';
 			z-index: 6;
 			.point{
-				left: -25%;
+				left: -8/16rem;
+				top: 0;
 			}
 		}
 	}
@@ -228,13 +234,14 @@
 			width: ~'calc(.9rem * 3 + .7rem)';
 			.content:before{
 				left: auto;
-				right: -12px;
+				right: -8px;
 				border-color: transparent transparent #282828 #282828 ;
 			  transform: rotate(-45deg);
 			}
 			.point{
 				left: auto;
-				right: -12px;
+				right: -10/16rem;
+				top: 4/16rem;
 			}
 		}
 	}
@@ -251,11 +258,12 @@
 			left:~'calc(100% + 5px)';
 			width: ~'calc(.9rem * 2 + .7rem)';
 			.content:before{
-				transform: rotate(-45deg);
+				transform: rotate(-35deg);
 				top:50%;
 			}
 			.point{
 				top:50%;
+				left: -8/16rem;
 			}
 		}
 	}
@@ -304,10 +312,10 @@
 			
 			.tips{
 				left: 65%;
-				top:0.5125rem;
+				top:0;
 				.point{
-					top:-5px;
-					left: -45%;
+					top:0;
+					left: -8/16rem;
 				}
 			}
 		}
@@ -443,18 +451,18 @@
 			.tips{
 				top:~'calc(100% - 6px)';
 				left:auto;
-				right: ~'calc(100% + 12px)';
+				right: ~'calc(100% + 6px)';
 				width: ~'calc(.9rem * 3 + .7rem)';
 				.content:before{
 					left: auto;
-					right: -12px;
+					right: -8px;
 					transform: rotate(-45deg);
 					border-color: transparent transparent #282828 #282828;
 				}
 				.point{
 					left: auto;
-					right: -16px;
-					top:10%;
+					right: -10/16rem;
+					top:4/16rem;
 				}
 			}
 		}
@@ -527,19 +535,19 @@
 		z-index: 1;
 		.tips{
 			left:auto;
-			right: 5.5625rem;
+			right: 5.5625rem - 1rem;
 			width: ~'calc(.9rem * 4 + .7rem)';
 			.content:before{
 				left: auto;
-				right: -12px;
+				right: -8px;
 				top:50%;
 				border-color: transparent transparent #282828 #282828 ;
-			  transform: rotate(45deg);
+			  transform: rotate(30deg);
 			}
 			.point{
 				left: auto;
-				right: -12px;
-				top:100%;
+				right: -8/16rem;
+				top:90%;
 			}
 		}
 	}
@@ -587,7 +595,7 @@
 	/*中控*/
 	.model{
 		position: absolute;
-		z-index: 1;
+		z-index: 10;
 		bottom:0;
 		width: 100%;
 		height: 13.75rem;
@@ -660,4 +668,19 @@
 			opacity: .6;
 		}
 	}
+	.q-mask{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: -1;
+        opacity: 0;
+        transition: all .5s;
+        &.open{
+        	z-index: 6;
+        	opacity: 1;
+        }
+     }
  }

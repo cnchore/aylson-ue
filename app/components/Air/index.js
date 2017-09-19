@@ -116,7 +116,7 @@ class Air extends Component{
 			proWidth=`${title/30*100}%`;
 		}
 		return (
-			<section className={cs('air',animation?animation:'',airOpen?'':'air-close')}>
+			<section className={cs('air',animation?animation:'',airOpen?'air-open':'air-close')}>
 				<header>
 					空调
 				</header>

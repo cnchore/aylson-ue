@@ -56,7 +56,10 @@ class Kitchen extends Component{
 			hashHistory.push('/fridge?animation=righttoleft')
 			return;
 		}
-
+		if(field==='recipesOpen'){
+			hashHistory.push('/recipes?animation=righttoleft')
+			return;
+		}
     this.setState({
       [field]: !this.state[field],
     });
@@ -165,6 +168,7 @@ class Kitchen extends Component{
 						<div onClick={e=>this.toggle(e,'recipesOpen')} className={cs('icon','icon-btn','btn-recipes',recipesOpen?'':'')}>健康食谱</div>
 					</div>
 				</div>
+				<div className={cs('q-mask',lightOpen?'':'open')}></div>
 			</section>
 		)
 	}

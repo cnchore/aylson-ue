@@ -6,12 +6,15 @@
 		width: 100%;
 		height: 100vh;
 		background: #5aaebc;
-		background: -webkit-linear-gradient(#5aaebc, #1464b5);
 		overflow: hidden;
 		position: relative;
+		transition: background .5s;
 	 	&.air-close{
 	 		background: #fff url('images/airbg.jpg') 0 0 no-repeat;
 	 		background-size: cover;
+	 	}
+	 	&.air-open{
+	 		background: -webkit-linear-gradient(#5aaebc, #1464b5);
 	 	}
  }
  .air{

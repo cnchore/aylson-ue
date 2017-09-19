@@ -1,0 +1,88 @@
+/*********
+ * recipes
+ **********/
+ 
+ section.recipes{
+ 	background: #fff;
+ 	width: 100%;
+ 	height: 100%;
+
+ }
+ .recipes{
+ 	header{
+ 		height: 2.8125rem;
+ 		line-height: 2.8125rem;
+ 		width: 100%;
+ 		color: #fff;
+ 		font-size: 1.125rem;
+ 		text-align: center;
+ 		background: #03a9f5;
+ 	}
+	.q-button-prev{
+		color:#fff;
+	}
+ 	.page{
+		width:100%;
+		height: ~'calc(100% - 2.8125rem)';
+		overflow-y: auto;
+		padding: 5/16rem;
+		.q-list{
+			width: 50%;
+			padding: 5/16rem;
+			display: inline-block;
+			.q-list-content{
+				position: relative;
+				border-radius: 4px;
+				overflow: hidden;
+				// background-color: #fff;
+				width: 100%;
+				// border: 1px solid #ddd;
+				box-shadow: 0 1px 3px rgba(34,25,25,0.1);
+				img{
+					width: 100%;
+					height: 120/16rem;
+				}
+				.q-list-title{
+					font-size: 1rem;
+			    color: #333;
+			    line-height: 26px;
+			    width: ~'calc(100% / 2 - 20 / 16rem)';
+			    display: block;
+			    text-overflow: ellipsis;
+			    white-space: nowrap;
+			    overflow: hidden;
+					padding: 5px;
+				}
+				.q-list-desc{
+					padding: 5px;
+					span{
+						display: inline-block;
+				    border: 1px solid #dedede;
+				    border-radius: 10px;
+				    font-size: 12px;
+				    color: #6a6a6a;
+				    padding: 2px 8px;
+				    margin-right: 4px;
+				    margin-bottom: 4px;
+				    height: 18px;
+				    line-height: 12px;
+					}
+				}
+				.ponly{
+					text-shadow: 2px 2px 2px rgba(219,71,25,.2);
+			    position: absolute;
+			    top: 12px;
+			    left: 0;
+			    background: #ffa810;
+			    color: #fff;
+			    width: 52px;
+			    height: 26px;
+			    display: block;
+			    line-height: 26px;
+			    text-align: center;
+			    font-size: 14px;
+				}
+			}
+		}
+ 	}
+} 
