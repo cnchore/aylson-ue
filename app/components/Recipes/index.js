@@ -16,7 +16,7 @@ class Recipes extends Component{
   toggle(e,field){
 		e.preventDefault();
 		e.stopPropagation();
-		hashHistory.push('/recipesDetail?animation=righttoleft&code='+field)
+		hashHistory.push('/recipes/detail?animation=righttoleft&code='+field)
   }
   
 	render(){
