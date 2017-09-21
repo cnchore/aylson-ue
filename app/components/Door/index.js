@@ -24,6 +24,7 @@ class Door extends Component{
 		let animation=location && location.query && location.query.animation?location.query.animation:'';
 		return (
 			<section className={cs('index',animation?animation:'')}>
+				<div className="q-state"></div>
 				<header>
 					设备体验专区
 				</header>

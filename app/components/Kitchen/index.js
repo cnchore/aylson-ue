@@ -74,14 +74,15 @@ class Kitchen extends Component{
 				onTouchMove={e=>this.handleMove(e)} 
 				onTouchEnd={e=>this.handleTouchEnd(e)}
 				>
+				<div className="q-state"></div>
 				<header>
 					厨房
+					<Link to="/room?animation=lefttoright" className="q-button-prev"></Link>
+					<div className="pagination">
+						<span></span>
+						<span className="active"></span>
+					</div>
 				</header>
-				<Link to="/room?animation=lefttoright" className="q-button-prev"></Link>
-				<div className="pagination">
-					<span></span>
-					<span className="active"></span>
-				</div>
 				<div className="page">
 					<div className={cs('light',lightOpen?'open':'')}>
 						<div className="tips">

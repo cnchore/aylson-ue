@@ -93,10 +93,11 @@ class Fridge extends Component{
 		return (
 			<section className={cs('fridge',animation?animation:'')} 
 				>
+				<div className="q-state"></div>
 				<header>
 					冰箱
+					<Link to="/kitchen?animation=lefttoright" className="q-button-prev"></Link>
 				</header>
-				<Link to="/kitchen?animation=lefttoright" className="q-button-prev"></Link>
 				<div className="page">
 					<div className="out">
 						<div className="left" onClick={e=>this.handerTemperature('coldStorageModelVisable','tempColdStorage','coldStorage')}>

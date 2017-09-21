@@ -117,10 +117,11 @@ class Air extends Component{
 		}
 		return (
 			<section className={cs('air',animation?animation:'',airOpen?'air-open':'air-close')}>
+				<div className="q-state"></div>
 				<header>
 					空调
+					<Link to={`/room?animation=lefttoright&airOpen=${airOpen}`} className="q-button-prev color-white"></Link>
 				</header>
-				<Link to={`/room?animation=lefttoright&airOpen=${airOpen}`} className="q-button-prev color-white"></Link>
 				<div className={cs('air-switch','icon-btn',airOpen?'open':'')} onClick={e=>this.toggle(e,'airOpen')}></div>
 				{
 					airOpen?

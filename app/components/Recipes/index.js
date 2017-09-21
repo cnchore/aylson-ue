@@ -27,10 +27,11 @@ class Recipes extends Component{
 		return (
 			<section className={cs('recipes',animation?animation:'')} 
 				>
+				<div className="q-state"></div>
 				<header>
 					健康食谱
+					<Link to="/kitchen?animation=lefttoright" className="q-button-prev"></Link>
 				</header>
-				<Link to="/kitchen?animation=lefttoright" className="q-button-prev"></Link>
 				<div className="page">
 					<div className="q-list" onClick={e=>this.toggle(e,'xhsm')}>
 						<div className="q-list-content">

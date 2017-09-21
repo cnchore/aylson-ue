@@ -100,10 +100,12 @@ class RecipesDetail extends Component{
 		return (
 			<section className={cs('recipes-detail',animation?animation:'')} 
 				>
+				<div className="q-state"></div>
+				
 				<header>
 					健康食谱
-				</header>
 				<Link to="/recipes?animation=lefttoright" className="q-button-prev"></Link>
+				</header>
 				<div className="page">
 					<img src={require(`${_list.img}`)}  alt={_list.name}/>
 					

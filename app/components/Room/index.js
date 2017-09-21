@@ -107,14 +107,15 @@ class Room extends Component{
 				onTouchStart={e=>this.handleStart(e)} 
 				onTouchMove={e=>this.handleMove(e)} 
 				onTouchEnd={e=>this.handleTouchEnd(e)}>
+				<div className="q-state"></div>
 				<header>
 					客厅
+					<Link to="/?animation=lefttoright" className="q-button-prev"></Link>
+					<div className="pagination">
+						<span className="active"></span>
+						<span></span>
+					</div>
 				</header>
-				<Link to="/?animation=lefttoright" className="q-button-prev"></Link>
-				<div className="pagination">
-					<span className="active"></span>
-					<span></span>
-				</div>
 				<div className="page" >
 					<div className={cs('light',lightOpen?'open':'')}>
 						<div className="tips">
