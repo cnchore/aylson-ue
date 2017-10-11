@@ -9,7 +9,7 @@ class Air extends Component{
 	  super(props);
 	
 	  this.state = {
-	  	airOpen:true,
+	  	airOpen: this.props.location.query.t==='true',
 	  	moshiOpen:false,
 	  	fengsuOpen:false,
 	  	moshiVisable:false,
@@ -92,11 +92,13 @@ class Air extends Component{
   	return '明天'
   }
 	render(){
-		const {moshiOpen,fengsuOpen,moshiVisable,fengsuVisable,dingshiOpen,dingshiVisable,
+		let {moshiOpen,fengsuOpen,moshiVisable,fengsuVisable,dingshiOpen,dingshiVisable,
 			progress,moshiCheck,fengsuCheck,title,btnsOpen,airOpen,
 			ecoOpen,youshuimianOpen,zuoyoubaifengOpen,shangxiabaifengOpen} =this.state;
 		const {location} =this.props;
 		let animation=location && location.query && location.query.animation?location.query.animation:'';
+		// let _airOpen=location && location.query && location.query.t?location.query.t:'true';
+
 		let moshiImg,fengsuImg,moshiTxt='',fengsuTxt='';
 		switch(moshiCheck){
 			case 'zhileng':moshiImg=require('./images/模式/制冷1.png');moshiTxt='制冷';break;

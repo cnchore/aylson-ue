@@ -388,12 +388,61 @@
         right: 0;
         bottom: 0;
         background-color: rgba(0, 0, 0, 0.4);
-        z-index: -1;
-        opacity: 0;
         transition: all .5s;
         &.open{
             z-index: 6;
             opacity: 1;
         }
+        &.close{
+            // transition: all 1s;
+            z-index: -1;
+            opacity: 0;
+        }
      }
+    .q-model-tips{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+        -webkit-box-orient: vertical;
+        color: #fff;
+        transition: all .5s;
+        div{
+            padding: 5px 0;
+            &:first-child{
+                font-size: 20px;
+            }
+        }
+        span{
+            color: rgba(187, 246, 250, 1);
+        }
+       &.open{
+            optcity:0;
+            z-index: -1;
+            animation: delyclose 2s;
+       }
+       &.close{
+            optcity:0;
+            z-index: -1;
+       }
+       @keyframes delyclose{
+            0%{
+                z-index: 15;
+                opacity: 1;
+            }
+            92%{
+                z-index: 15;
+                optcity:0.1;
+            }
+            100%{
+                // optcity:15;
+                z-index: -1;
+            }
+       }
+    }
  }

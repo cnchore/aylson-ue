@@ -23,7 +23,7 @@ class Door extends Component{
 		const {location} =this.props;
 		let animation=location && location.query && location.query.animation?location.query.animation:'';
 		return (
-			<section className={cs('index',animation?animation:'')}>
+			<section className={cs('index',animation?animation:'')} style={this.props.styles} >
 				<div className="q-state"></div>
 				<header>
 					设备体验专区
@@ -69,7 +69,7 @@ class Door extends Component{
 				
 				<div className="model-win" style={{opacity:modelVisable?1:0,zIndex:modelVisable?11:-1}}>
 					<div className="body">
-						<Link to="/room?animation=righttoleft">
+						<Link to="/room?animation=righttoleft&t=true">
 							<div className="content-img"></div>
 							<div className="desc">点击开锁</div>
 						</Link>

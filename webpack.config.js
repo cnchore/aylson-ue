@@ -13,7 +13,7 @@ module.exports = {
     inline: true,//实时刷新
     port:8003,
     // host:'192.168.0.137'
-    host:'192.168.0.118'
+    host:'192.168.0.128'
   },
   module: {
   	rules: [

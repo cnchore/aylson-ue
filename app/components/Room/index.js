@@ -7,22 +7,26 @@ var audio;
 class Room extends Component{
 	constructor(props) {
 	  super(props);
-	
+		this.modelTips=this.props.location.query.t==='true';
 	  this.state = {
-	  	lightOpen:false,
+	  	lightOpen:true,
 	  	curtainsOpen:true,
-	  	windowOpen:false,
-	  	airRun:false,
+	  	windowOpen:true,
+	  	airRun:true,
 	  	startx:0,
 	  	endx:0,
 	  	touched:false,
-	  	soundOpen:false,
+	  	soundOpen:true,
 	  	documentWidth:window.screen.availWidth,
 	  	animation:'',
 	  };
 	}
 	componentDidMount(){
-		
+		let self=this;
+		self.modelTips&&self.HTML5Audio(mp3);
+		// setTimeout(function(){
+		// 	self.modelTips=false;
+		// },2000);
 	}
 	componentWillUnmount(){
 		if(audio){
@@ -90,23 +94,26 @@ class Room extends Component{
 		if( deltax > 0 ){//move right
     }
     else{//move left
-    	console.log('move left')
+    	// console.log('move left')
       hashHistory.push('/kitchen?animation=righttoleft');
     }
   }
-  handleAir(){
-  	hashHistory.push('/air?animation=righttoleft');
+  handleAir(e,t){
+  	hashHistory.push('/air?animation=righttoleft&t='+t);
   }
+
 	render(){
 		const {lightOpen,curtainsOpen,windowOpen,airRun,soundOpen} =this.state;
 		const {location} =this.props;
-		let animation=location && location.query && location.query.animation?location.query.animation:'';
-		let airOpen=location && location.query && location.query.airOpen?location.query.airOpen:'';
+		let {query} = location;
+		let animation=query&&query.animation?query.animation:'';
+		let airOpen=query&&query.airOpen?query.airOpen:'true';
+		// let showTips=query && query.t?query.t:'false';
 		return (
-			<div className={cs('room',animation?animation:'')} 
+			<div className={cs('room',animation?animation:'')} style={this.props.styles}
 				onTouchStart={e=>this.handleStart(e)} 
 				onTouchMove={e=>this.handleMove(e)} 
-				onTouchEnd={e=>this.handleTouchEnd(e)}>
+				onTouchEnd={e=>this.handleTouchEnd(e)} >
 				<div className="q-state"></div>
 				<header>
 					客厅
@@ -160,9 +167,23 @@ class Room extends Component{
 						<div onClick={e=>this.toggle(e,'lightOpen')} className={cs('icon','icon-btn','btn-light',lightOpen?'':'unactive')}>主灯</div>
 						<div onClick={e=>this.toggle(e,'windowOpen')} className={cs('icon','icon-btn','btn-window',windowOpen?'':'unactive')}>窗</div>
 						<div onClick={e=>this.toggle(e,'curtainsOpen')} className={cs('icon','icon-btn','btn-curtains',curtainsOpen?'':'unactive')}>窗帘</div>
-						<div onClick={e=>this.handleAir(e)} className={cs('icon','icon-btn','btn-air',airOpen==='true'?'':'unactive')}>空调</div>
+						<div onClick={e=>this.handleAir(e,airOpen)} className={cs('icon','icon-btn','btn-air',airOpen==='true'?'':'unactive')}>空调</div>
 					</div>
-				<div className={cs('q-mask',lightOpen?'':'open')}></div>
+				<div className={cs('q-mask',lightOpen?'close':'open')}></div>
+				{
+					this.modelTips?
+					<div className={cs('q-model-tips',this.modelTips?'open':'close')}>
+						<div>欢迎回家</div>
+						<div>已自动为您开启回家模式</div>
+						<div>灯：<span>开启</span></div>
+						<div>窗：<span>开启</span></div>
+						<div>窗帘：<span>开启</span></div>
+						<div>空调：<span>开启</span></div>
+						<div>音响：<span>开启</span></div>
+						<div>向左滑动，查看更多</div>
+					</div>
+					:null
+				}
 			</div>
 		)
 	}
