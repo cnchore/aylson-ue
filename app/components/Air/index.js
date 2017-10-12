@@ -9,7 +9,7 @@ class Air extends Component{
 	  super(props);
 	
 	  this.state = {
-	  	airOpen: this.props.location.query.t==='true',
+	  	airOpen: true,//this.props.location.query.t==='true',
 	  	moshiOpen:false,
 	  	fengsuOpen:false,
 	  	moshiVisable:false,
@@ -95,8 +95,8 @@ class Air extends Component{
 		let {moshiOpen,fengsuOpen,moshiVisable,fengsuVisable,dingshiOpen,dingshiVisable,
 			progress,moshiCheck,fengsuCheck,title,btnsOpen,airOpen,
 			ecoOpen,youshuimianOpen,zuoyoubaifengOpen,shangxiabaifengOpen} =this.state;
-		const {location} =this.props;
-		let animation=location && location.query && location.query.animation?location.query.animation:'';
+		// const {location} =this.props;
+		// let animation=location && location.query && location.query.animation?location.query.animation:'';
 		// let _airOpen=location && location.query && location.query.t?location.query.t:'true';
 
 		let moshiImg,fengsuImg,moshiTxt='',fengsuTxt='';
@@ -118,11 +118,11 @@ class Air extends Component{
 			proWidth=`${title/30*100}%`;
 		}
 		return (
-			<section className={cs('air',animation?animation:'',airOpen?'air-open':'air-close')}>
+			<section className={cs('air',airOpen?'air-open':'air-close')} style={this.props.style}>
 				<div className="q-state"></div>
 				<header>
 					空调
-					<Link to={`/room?animation=lefttoright&airOpen=${airOpen}`} className="q-button-prev color-white"></Link>
+					<span  className="q-button-prev color-white" onClick={e=>this.props.gotoRoom(airOpen,false)}></span>
 				</header>
 				<div className={cs('air-switch','icon-btn',airOpen?'open':'')} onClick={e=>this.toggle(e,'airOpen')}></div>
 				{

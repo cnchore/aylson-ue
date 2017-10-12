@@ -2,9 +2,10 @@
  * room
  **********/
  body{
-    background: #d2cfc8;
+    // background: #d2cfc8;
  }
- div.room {
+ section.room {
+    position: relative;
     width: 100%;
     height: 100%;
     background: url('images/7.png') no-repeat,
@@ -19,6 +20,7 @@
     100% 6.96875rem,
     100% 22.5rem,
     100% 100%;
+    transition: opacity 3s;
  }
  /******
  * tip提示
@@ -315,6 +317,7 @@
          	height: 10.9375rem;
          	background: url('images/sofa.png') no-repeat;
          	background-size: cover;
+            transition: background 1s;
             &.light-open{
                 background: url('images/11.png') no-repeat;
                 background-size: cover;
@@ -422,12 +425,12 @@
             color: rgba(187, 246, 250, 1);
         }
        &.open{
-            optcity:0;
+            opacity:0;
             z-index: -1;
-            animation: delyclose 2s;
+            animation: delyclose 6s;
        }
        &.close{
-            optcity:0;
+            opacity:0;
             z-index: -1;
        }
        @keyframes delyclose{
@@ -437,10 +440,10 @@
             }
             92%{
                 z-index: 15;
-                optcity:0.1;
+                opacity:0;
             }
             100%{
-                // optcity:15;
+                opacity:0;
                 z-index: -1;
             }
        }

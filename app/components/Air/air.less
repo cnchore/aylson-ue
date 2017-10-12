@@ -8,7 +8,8 @@
 		background: #5aaebc;
 		overflow: hidden;
 		position: relative;
-		transition: background .5s;
+		opacity: 0;
+		transition: opacity 3s,background 3s;
 	 	&.air-close{
 	 		background: #fff url('images/airbg.jpg') 0 0 no-repeat;
 	 		background-size: cover;
@@ -16,6 +17,7 @@
 	 	&.air-open{
 	 		background: -webkit-linear-gradient(#5aaebc, #1464b5);
 	 	}
+
  }
  .air{
 	 .hide{

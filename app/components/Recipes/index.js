@@ -16,21 +16,22 @@ class Recipes extends Component{
   toggle(e,field){
 		e.preventDefault();
 		e.stopPropagation();
-		hashHistory.push('/recipes/detail?animation=righttoleft&code='+field)
+		// hashHistory.push('/recipes/detail?animation=righttoleft&code='+field)
+		this.props.toggleRecipesDetail(true,field)
   }
   
 	render(){
-		const { } =this.state;
-		const {location} =this.props;
-		let animation=location && location.query && location.query.animation?location.query.animation:'';
+		// const { } =this.state;
+		// const {location} =this.props;
+		// let animation=location && location.query && location.query.animation?location.query.animation:'';
 		
 		return (
-			<section className={cs('recipes',animation?animation:'')} 
+			<section className={cs('recipes')} style={this.props.style}
 				>
 				<div className="q-state"></div>
 				<header>
 					健康食谱
-					<Link to="/kitchen?animation=lefttoright" className="q-button-prev"></Link>
+					<span onClick={e=>this.props.toggleRecipes(false)} className="q-button-prev"></span>
 				</header>
 				<div className="page">
 					<div className="q-list" onClick={e=>this.toggle(e,'xhsm')}>

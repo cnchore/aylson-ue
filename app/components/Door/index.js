@@ -10,20 +10,14 @@ class Door extends Component{
 	  super(props);
 	
 	  this.state = {
-	  	modelVisable:false,
 	  };
 	}
 	render(){
-		let handerFinger=()=>{
-			this.setState({
-				modelVisable:true
-			})
-		}
-		const {modelVisable} =this.state;
-		const {location} =this.props;
+		// const {modelVisable} =this.state;
+		const {location,modelVisable} =this.props;
 		let animation=location && location.query && location.query.animation?location.query.animation:'';
 		return (
-			<section className={cs('index',animation?animation:'')} style={this.props.styles} >
+			<section className={cs('index',animation?animation:'')}>
 				<div className="q-state"></div>
 				<header>
 					设备体验专区
@@ -50,7 +44,7 @@ class Door extends Component{
 										<img src={png1} alt="密码锁" className="q-img look" />
 										<img src={png2} alt="门铃" className="q-img bell" />
 									</div>
-									<div className="l-b" onClick={handerFinger}>
+									<div className="l-b" onClick={e=>this.props.handerFinger()}>
 										<img src={png4} alt="指纹识别" className="q-img finger-mark" />
 										<div className="tips">
 											<span className="point"></span>
@@ -68,11 +62,11 @@ class Door extends Component{
 				</div>
 				
 				<div className="model-win" style={{opacity:modelVisable?1:0,zIndex:modelVisable?11:-1}}>
-					<div className="body">
-						<Link to="/room?animation=righttoleft&t=true">
+					<div className="body" onClick={e=>this.props.gotoRoom()}>
+						
 							<div className="content-img"></div>
 							<div className="desc">点击开锁</div>
-						</Link>
+					
 					</div>
 				</div>
 					

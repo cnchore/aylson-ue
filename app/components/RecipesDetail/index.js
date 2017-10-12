@@ -88,9 +88,12 @@ class RecipesDetail extends Component{
   
 	render(){
 		const {detals} =this.state;
-		const {location} =this.props;
-		let animation=location && location.query && location.query.animation?location.query.animation:'';
-		let code=location && location.query && location.query.code?location.query.code:'';
+		const {code} =this.props;
+		if(!code){
+			return <div>暂无数据</div>
+		}
+		// let animation=location && location.query && location.query.animation?location.query.animation:'';
+		// let code=location && location.query && location.query.code?location.query.code:'';
 		let _list=detals.filter(f=>f.code===String(code))[0];
 		let _type=_list.type.map((t,index)=><span key={index}>{t}</span>),
 				_zhuliao=_list.zhuliao.map((z,index)=><div key={index}><span>{z.name}</span><span>{z.nums && z.nums}</span></div>),
@@ -98,13 +101,13 @@ class RecipesDetail extends Component{
 				_buzhou=_list.buzhou.map((b,index)=><li key={index}>{b}</li>),
 				_ps=_list.ps && (_list.ps instanceof Array) ? _list.ps.map((p,index)=><li key={index}>{p}</li>) :_list.ps;
 		return (
-			<section className={cs('recipes-detail',animation?animation:'')} 
+			<section className={cs('recipes-detail')} style={this.props.style}
 				>
 				<div className="q-state"></div>
 				
 				<header>
 					健康食谱
-				<Link to="/recipes?animation=lefttoright" className="q-button-prev"></Link>
+					<span onClick={e=>this.props.toggleRecipesDetail(false)} className="q-button-prev"></span>
 				</header>
 				<div className="page">
 					<img src={require(`${_list.img}`)}  alt={_list.name}/>

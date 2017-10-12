@@ -7,32 +7,25 @@ var audio;
 class Room extends Component{
 	constructor(props) {
 	  super(props);
-		this.modelTips=this.props.location.query.t==='true';
+		// this.modelTips=this.props.modelTips;
 	  this.state = {
-	  	lightOpen:true,
-	  	curtainsOpen:true,
-	  	windowOpen:true,
-	  	airRun:true,
 	  	startx:0,
 	  	endx:0,
 	  	touched:false,
-	  	soundOpen:true,
 	  	documentWidth:window.screen.availWidth,
-	  	animation:'',
 	  };
 	}
 	componentDidMount(){
-		let self=this;
-		self.modelTips&&self.HTML5Audio(mp3);
-		// setTimeout(function(){
-		// 	self.modelTips=false;
-		// },2000);
+	
 	}
 	componentWillUnmount(){
 		if(audio){
 			audio.pause();
 			audio=null;
 		}
+	}
+	componentWillReceiveProps(nextProps){
+		nextProps.modelTips && !audio && this.playAudio();
 	}
 	HTML5Audio(url, loop) {
 		audio=new Audio(url)
@@ -48,24 +41,29 @@ class Room extends Component{
         }
     }
 	}
+	playAudio(){
+		if(audio){
+			if(audio.paused){
+				audio.play();
+			}else{
+				audio.pause();
+			}
+
+		}else{
+			this.HTML5Audio(mp3)
+		}
+	}
+	stopAudio(){
+		audio && !audio.ended && audio.pause();
+  	audio=null;
+	}
 	toggle(e,field){
 		e.preventDefault();
 		e.stopPropagation();
 		if(field==='soundOpen'){
-			if(audio){
-				if(audio.paused){
-					audio.play();
-				}else{
-					audio.pause();
-				}
-
-			}else{
-				this.HTML5Audio(mp3)
-			}
+			this.playAudio();
 		}
-    this.setState({
-      [field]: !this.state[field],
-    });
+    this.props.setState(field);
   }
   handleStart(e){
     e.stopPropagation();
@@ -95,29 +93,36 @@ class Room extends Component{
     }
     else{//move left
     	// console.log('move left')
-      hashHistory.push('/kitchen?animation=righttoleft');
+      // hashHistory.push('/kitchen?animation=righttoleft');
+      this.stopAudio();
+      this.props.gotoKitchen();
     }
   }
-  handleAir(e,t){
-  	hashHistory.push('/air?animation=righttoleft&t='+t);
+  handleAir(e,airOpen){
+  	// hashHistory.push('/air?animation=righttoleft&t='+t);
+  	this.props.toggleAir(airOpen);
   }
-
+  handleGotoDoor(){
+  	this.stopAudio();
+  	this.props.gotoDoor();
+  }
 	render(){
-		const {lightOpen,curtainsOpen,windowOpen,airRun,soundOpen} =this.state;
-		const {location} =this.props;
-		let {query} = location;
-		let animation=query&&query.animation?query.animation:'';
-		let airOpen=query&&query.airOpen?query.airOpen:'true';
+		const {lightOpen,curtainsOpen,windowOpen,airRun,soundOpen,airOpen,modelTips} =this.props;
+		// const {location} =this.props;
+		// let {query} = location;
+		// let animation=query&&query.animation?query.animation:'';
+		// let airOpen=query&&query.airOpen?query.airOpen:'true';
 		// let showTips=query && query.t?query.t:'false';
+		
 		return (
-			<div className={cs('room',animation?animation:'')} style={this.props.styles}
+			<section className={cs('room')} style={this.props.style}
 				onTouchStart={e=>this.handleStart(e)} 
 				onTouchMove={e=>this.handleMove(e)} 
 				onTouchEnd={e=>this.handleTouchEnd(e)} >
 				<div className="q-state"></div>
 				<header>
 					客厅
-					<Link to="/?animation=lefttoright" className="q-button-prev"></Link>
+					<span className="q-button-prev" onClick={e=>this.handleGotoDoor()}></span>
 					<div className="pagination">
 						<span className="active"></span>
 						<span></span>
@@ -158,7 +163,7 @@ class Room extends Component{
 							<span className="point"></span>
 							<span className="content">空调</span>
 						</div>
-						<div className={cs('wind',airOpen==='true'?'run':'')}></div>
+						<div className={cs('wind',airOpen?'run':'')}></div>
 					</div>
 					<div className={cs('sofa',lightOpen?'light-open':'')}></div>
 				</div>
@@ -167,12 +172,12 @@ class Room extends Component{
 						<div onClick={e=>this.toggle(e,'lightOpen')} className={cs('icon','icon-btn','btn-light',lightOpen?'':'unactive')}>主灯</div>
 						<div onClick={e=>this.toggle(e,'windowOpen')} className={cs('icon','icon-btn','btn-window',windowOpen?'':'unactive')}>窗</div>
 						<div onClick={e=>this.toggle(e,'curtainsOpen')} className={cs('icon','icon-btn','btn-curtains',curtainsOpen?'':'unactive')}>窗帘</div>
-						<div onClick={e=>this.handleAir(e,airOpen)} className={cs('icon','icon-btn','btn-air',airOpen==='true'?'':'unactive')}>空调</div>
+						<div onClick={e=>this.handleAir(e,airOpen)} className={cs('icon','icon-btn','btn-air',airOpen?'':'unactive')}>空调</div>
 					</div>
 				<div className={cs('q-mask',lightOpen?'close':'open')}></div>
 				{
-					this.modelTips?
-					<div className={cs('q-model-tips',this.modelTips?'open':'close')}>
+					modelTips?
+					<div className={cs('q-model-tips',modelTips?'open':'close')}>
 						<div>欢迎回家</div>
 						<div>已自动为您开启回家模式</div>
 						<div>灯：<span>开启</span></div>
@@ -184,7 +189,7 @@ class Room extends Component{
 					</div>
 					:null
 				}
-			</div>
+			</section>
 		)
 	}
 }

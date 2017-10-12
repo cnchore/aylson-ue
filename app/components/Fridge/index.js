@@ -87,16 +87,16 @@ class Fridge extends Component{
 			coldStorageModelVisable,tempColdStorage,
 			freezingModelVisable,tempFreezing,
 			temperatureModelVisable,tempTemperature} =this.state;
-		const {location} =this.props;
-		let animation=location && location.query && location.query.animation?location.query.animation:'';
+		// const {location} =this.props;
+		// let animation=location && location.query && location.query.animation?location.query.animation:'';
 		
 		return (
-			<section className={cs('fridge',animation?animation:'')} 
+			<section className={cs('fridge')} style={this.props.style}
 				>
 				<div className="q-state"></div>
 				<header>
 					冰箱
-					<Link to="/kitchen?animation=lefttoright" className="q-button-prev"></Link>
+					<span onClick={e=>this.props.toggleFridge(false)} className="q-button-prev"></span>
 				</header>
 				<div className="page">
 					<div className="out">

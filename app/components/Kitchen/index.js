@@ -11,14 +11,6 @@ class Kitchen extends Component{
 	  	endx:0,
 	  	touched:false,
 	  	documentWidth:window.screen.availWidth,
-	  	fridgeOpen:false,//冰箱
-			lightOpen:false,//主灯
-			machineOpen:false,//抽烟机
-			fanOpen:false,//抽风机
-			blowerOpen:false,//送风机
-			beltOpen:false,//灯带
-			winOpen:true,//电动窗
-			recipesOpen:false,//健康食谱
 	  };
 	}
 	handleStart(e){
@@ -43,7 +35,8 @@ class Kitchen extends Component{
   	if( !touched || Math.abs( deltax ) < 0.3*documentWidth)
   		return;
 		if( deltax > 0 ){//move right
-      hashHistory.push('/room?animation=lefttoright');
+      // hashHistory.push('/room?animation=lefttoright');
+      this.props.gotoRoom(false);
     }
     else{//move left
     }
@@ -53,31 +46,31 @@ class Kitchen extends Component{
 		e.preventDefault();
 		e.stopPropagation();
 		if(field==='fridgeOpen'){
-			hashHistory.push('/fridge?animation=righttoleft')
-			return;
+			this.props.toggleFridge();
+			// hashHistory.push('/fridge?animation=righttoleft')
+			// return;
 		}
 		if(field==='recipesOpen'){
-			hashHistory.push('/recipes?animation=righttoleft')
-			return;
+			this.props.toggleRecipes();
+			// hashHistory.push('/recipes?animation=righttoleft')
+			// return;
 		}
-    this.setState({
-      [field]: !this.state[field],
-    });
+    this.props.setState(field+'_K');
   }
 	render(){
-		const {fridgeOpen,lightOpen,machineOpen,fanOpen,blowerOpen,beltOpen,winOpen,recipesOpen} =this.state;
-		const {location} =this.props;
-		let animation=location && location.query && location.query.animation?location.query.animation:'';
+		const {fridgeOpen,lightOpen,machineOpen,fanOpen,blowerOpen,beltOpen,winOpen,recipesOpen} =this.props;
+		// const {location} =this.props;
+		// let animation=location && location.query && location.query.animation?location.query.animation:'';
 		return (
-			<section className={cs('kitchen',animation?animation:'')} 
+			<section className={cs('kitchen')} 
 				onTouchStart={e=>this.handleStart(e)} 
 				onTouchMove={e=>this.handleMove(e)} 
 				onTouchEnd={e=>this.handleTouchEnd(e)}
-				>
+				style={this.props.style}>
 				<div className="q-state"></div>
 				<header>
 					厨房
-					<Link to="/room?animation=lefttoright" className="q-button-prev"></Link>
+					<span className="q-button-prev" onClick={e=>this.props.gotoRoom(false)}></span>
 					<div className="pagination">
 						<span></span>
 						<span className="active"></span>
