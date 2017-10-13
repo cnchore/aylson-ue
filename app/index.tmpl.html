@@ -4,12 +4,46 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui, shrink-to-fit=no">
     <title>安居艾臣体验中心</title>
+    <style>
+    	.loading{
+			    width: 100vw;
+			    height: 100vh;
+			    display: flex;
+			    justify-content: center;
+			    align-items: center;
+			    align-content: center;
+			    background-color: #fff;
+			}
+			.loading:before{
+				content: '';
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				border-left: 4px solid #000;
+				animation: loadingrun 1s infinite linear;
+			}
+			.loading:after{
+				/*color: #fff;*/
+				content: 'loading';
+				position: absolute;
+				top: calc(50% + 44px);
+			}
+			@keyframes loadingrun{
+				0%{
+					transform: rotate(0deg);
+				}
+				100%{
+					transform: rotate(360deg);
+				}
+			} 
+    </style>
   </head>
   <body>
-  	
     <div id='root'>
     </div>
+  	<div id="loading" class="loading"></div>
     <script type="text/javascript">
+    
 		(function(doc, win) {
 			var docEl = doc.documentElement,
 			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
@@ -20,6 +54,10 @@
 					docEl.style.fontSize = '32px';
 				} else {
 					docEl.style.fontSize = 32 * (clientWidth / 750) + 'px';
+				}
+				var loading=doc.getElementById('loading');
+				if(loading){
+					loading.style.display='none';
 				}
 			};
 

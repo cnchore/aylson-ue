@@ -122,7 +122,7 @@ class Air extends Component{
 				<div className="q-state"></div>
 				<header>
 					空调
-					<span  className="q-button-prev color-white" onClick={e=>this.props.gotoRoom(airOpen,false)}></span>
+					<span  className="q-button-prev-white" onClick={e=>this.props.gotoRoom(airOpen,false)}></span>
 				</header>
 				<div className={cs('air-switch','icon-btn',airOpen?'open':'')} onClick={e=>this.toggle(e,'airOpen')}></div>
 				{

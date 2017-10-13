@@ -53,11 +53,13 @@ class App extends Component{
 	toggleAir(airOpen,type=true){
 
 		let roomStyle ={
-			transform:type?'translateY(-100%)':'translateY(0)',
+			zIndex:type?-1:'auto',
+			// transform:type?'translateY(-100%)':'translateY(0)',
 			opacity:type?0:1
 		}
 		let airStyle={
-			transform:type?'translateY(-100%)':'translateY(0)',
+			zIndex:!type?-1:'auto',
+			// transform:type?'translateY(-100%)':'translateY(0)',
 			opacity:type?1:0
 		}
 		this.setState({
@@ -68,50 +70,84 @@ class App extends Component{
 		})
 	}
 	toggleFridge(type=true){
+		console.log('toggleFridge',type)
 		let kitchenStyle ={
-			transform:type?'translateY(-100%)':'translateY(0)',
+			// transform:type?'translateY(-100%)':'translateY(0)',
+			zIndex:type?-1:'auto',
 			opacity:type?0:1
 		}
 		let fridgeStyle={
-			transform:type?'translateY(-100%)':'translateY(0)',
+			// transform:type?'translateY(-100%)':'translateY(0)',
+			zIndex:!type?-1:'auto',
 			opacity:type?1:0
 		}
+
 		this.setState({
 			kitchenStyle,
 			fridgeStyle,
+			recipesDetailStyle:{
+				zIndex:-1,opacity:0
+			},
+			recipesStyle:{
+				zIndex:-1,opacity:0
+			}
 		})
 	}
 	toggleRecipes(type=true){
 		let kitchenStyle ={
-			transform:type?'translateY(-100%)':'translateY(0)',
+			// transform:type?'translateY(-100%)':'translateY(0)',
+			zIndex:type?-1:'auto',
 			opacity:type?0:1
 		}
 		let recipesStyle={
-			transform:type?'translateY(-200%)':'translateY(0)',
+			// transform:type?'translateY(-200%)':'translateY(0)',
+			zIndex:!type?-1:'auto',
 			opacity:type?1:0
 		}
 		this.setState({
 			kitchenStyle,
 			recipesStyle,
+			recipesDetailStyle:{
+				zIndex:-1,opacity:0
+			},
+			fridgeStyle:{
+				zIndex:-1,opacity:0
+			}
 		})
 	}
 	toggleRecipesDetail(type,code=null){
 		let recipesStyle={
-			transform:type?'translateY(-200%)':'translateY(-200%)',
+			// transform:type?'translateY(-200%)':'translateY(-200%)',
+			zIndex:type?-1:'auto',
 			opacity:type?0:1
 		}
 		let recipesDetailStyle ={
-			transform:type?'translateY(-300%)':'translateY(0)',
+			// transform:type?'translateY(-300%)':'translateY(0)',
+			zIndex:!type?-1:'auto',
 			opacity:type?1:0
 		}
 		this.setState({
 			recipesDetailStyle,
 			recipesStyle,
+			kitchenStyle:{
+				zIndex:-1,opacity:0
+			},
+			fridgeStyle:{
+				zIndex:-1,opacity:0
+			},
 			code
 		})
 	}
+	componentWillMount(){
+		this.setState({loading:true});
+	}
+	componentDidMount(){
+		this.setState({loading:false});
+	}
 	render(){
+
 		const {
+			
 			left,fingerVisable,
 			lightOpen,curtainsOpen,windowOpen,airRun,soundOpen,airOpen,modelTips,roomStyle,
 			fridgeOpen_K,lightOpen_K,machineOpen_K,fanOpen_K,blowerOpen_K,beltOpen_K,winOpen_K,recipesOpen_K,
@@ -126,6 +162,7 @@ class App extends Component{
 				animation:'righttoleft'
 			}
 		}
+
 		let width={width:this.clientWidth+'px'}
 		let style={width:3*this.clientWidth+'px',left:left+'px'}
 		

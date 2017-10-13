@@ -71,7 +71,7 @@ class Room extends Component{
         startx : e.targetTouches[0].clientX,
         touched:false,
     });
-      // e.preventDefault();
+    // e.preventDefault();
   }
   handleMove(e){
 
@@ -106,6 +106,10 @@ class Room extends Component{
   	this.stopAudio();
   	this.props.gotoDoor();
   }
+  handleGotoKitchen(){
+  	this.stopAudio();
+  	this.props.gotoKitchen();
+  }
 	render(){
 		const {lightOpen,curtainsOpen,windowOpen,airRun,soundOpen,airOpen,modelTips} =this.props;
 		// const {location} =this.props;
@@ -113,12 +117,12 @@ class Room extends Component{
 		// let animation=query&&query.animation?query.animation:'';
 		// let airOpen=query&&query.airOpen?query.airOpen:'true';
 		// let showTips=query && query.t?query.t:'false';
-		
+		// onTouchStart={e=>this.handleStart(e)} 
+		// 		onTouchMove={e=>this.handleMove(e)} 
+		// 		onTouchEnd={e=>this.handleTouchEnd(e)} 
 		return (
 			<section className={cs('room')} style={this.props.style}
-				onTouchStart={e=>this.handleStart(e)} 
-				onTouchMove={e=>this.handleMove(e)} 
-				onTouchEnd={e=>this.handleTouchEnd(e)} >
+				>
 				<div className="q-state"></div>
 				<header>
 					客厅
@@ -127,6 +131,7 @@ class Room extends Component{
 						<span className="active"></span>
 						<span></span>
 					</div>
+					<span className="q-button-next" onClick={e=>this.handleGotoKitchen()}></span>
 				</header>
 				<div className="page" >
 					<div className={cs('light',lightOpen?'open':'')}>
@@ -185,7 +190,6 @@ class Room extends Component{
 						<div>窗帘：<span>开启</span></div>
 						<div>空调：<span>开启</span></div>
 						<div>音响：<span>开启</span></div>
-						<div>向左滑动，查看更多</div>
 					</div>
 					:null
 				}

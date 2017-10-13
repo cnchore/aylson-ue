@@ -31,7 +31,7 @@ class Recipes extends Component{
 				<div className="q-state"></div>
 				<header>
 					健康食谱
-					<span onClick={e=>this.props.toggleRecipes(false)} className="q-button-prev"></span>
+					<span onClick={e=>this.props.toggleRecipes(false)} className="q-button-prev-white"></span>
 				</header>
 				<div className="page">
 					<div className="q-list" onClick={e=>this.toggle(e,'xhsm')}>

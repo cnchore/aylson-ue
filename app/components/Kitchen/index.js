@@ -61,11 +61,12 @@ class Kitchen extends Component{
 		const {fridgeOpen,lightOpen,machineOpen,fanOpen,blowerOpen,beltOpen,winOpen,recipesOpen} =this.props;
 		// const {location} =this.props;
 		// let animation=location && location.query && location.query.animation?location.query.animation:'';
+		// onTouchStart={e=>this.handleStart(e)} 
+		// 		onTouchMove={e=>this.handleMove(e)} 
+		// 		onTouchEnd={e=>this.handleTouchEnd(e)}
 		return (
 			<section className={cs('kitchen')} 
-				onTouchStart={e=>this.handleStart(e)} 
-				onTouchMove={e=>this.handleMove(e)} 
-				onTouchEnd={e=>this.handleTouchEnd(e)}
+				
 				style={this.props.style}>
 				<div className="q-state"></div>
 				<header>

@@ -117,6 +117,8 @@ a{
     z-index: 1;
 }
 .q-button-prev,
+.q-button-next,
+.q-button-prev-white,
 .swiper-button-prev{
     display: inline-block;
     vertical-align: middle;
@@ -155,11 +157,34 @@ a{
         transform: rotate(-45deg);
     }
 }
-.q-button-prev{
+.q-button-prev,.q-button-prev-white{
     position: absolute;
     z-index: 10;
 }
-
+.q-button-prev-white{
+    color:#fff;
+    &:before,
+    &:after{
+        color: #fff;
+    }
+}
+.q-button-next{
+    position: absolute;
+    z-index: 10;
+    left: auto;
+    right: 8px;
+    transform: scale(1,-1);
+    &:before{
+        top:2px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    &:after{
+        top:0;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+}
 .righttoleft{
     animation: showrighttoleft .8s;
 }
@@ -309,8 +334,13 @@ button,.icon-btn{
     bottom: 0;
     transition: all 1s;
     display: flex;
-    section{
+    .q-swiper{
         position: relative;
-       
+        section{
+            position: absolute;
+            top:0;
+            left: 0;
+        }
     }
-}   
+}
+  

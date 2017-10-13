@@ -90,7 +90,7 @@ class RecipesDetail extends Component{
 		const {detals} =this.state;
 		const {code} =this.props;
 		if(!code){
-			return <div>暂无数据</div>
+			return <section className={cs('recipes-detail')} style={this.props.style}></section>
 		}
 		// let animation=location && location.query && location.query.animation?location.query.animation:'';
 		// let code=location && location.query && location.query.code?location.query.code:'';
@@ -107,7 +107,7 @@ class RecipesDetail extends Component{
 				
 				<header>
 					健康食谱
-					<span onClick={e=>this.props.toggleRecipesDetail(false)} className="q-button-prev"></span>
+					<span onClick={e=>this.props.toggleRecipesDetail(false)} className="q-button-prev-white"></span>
 				</header>
 				<div className="page">
 					<img src={require(`${_list.img}`)}  alt={_list.name}/>
