@@ -260,71 +260,16 @@
              	position: absolute;
              	top:.5rem;
              	left:-3rem;
-                // width: 3.5rem;
              	width: 200/32rem;
-                // height: 2.375rem;
              	height: 84/32rem;
-                // transform: rotate(10deg);
-                // transition: transform .5s;
                 &.run{
                  	background: url('images/gas0.png') no-repeat;
                  	background-size: 100% 100%;
                     transform: scaleY(2) rotate(5deg) translate(0,.25rem);
-                    // animation: gasrun 1.6s infinite ease-in-out;
-                    perspective:500;
-                    // animation: gasscale 1s infinite linear;
                 }
              }
-             @keyframes gasscale{
-                0%{
-                    transform:scaleY(1) translate(0,.2rem);
-                    opacity: 1;
-                }
-                50%{
-                    transform:scaleY(3) translate(0, 0.4rem);
-                    opacity: .5;
-                }
-                100%{
-                    transform:scaleY(1) translate(0,.2rem);
-                    opacity: 1;
-                }
-                
-             }
-             @keyframes gasrun{
-                0% {
-                    background: url('images/gas0.png') no-repeat;
-                    background-size: 100% 100%;
-                }
-                14.285% {
-                    background: url('images/gas1.png') no-repeat;
-                    background-size: 100% 100%;
-                }
-                28.571% {
-                    background: url('images/gas2.png') no-repeat;
-                    background-size: 100% 100%;
-                }
-                42.857% {
-                    background: url('images/gas3.png') no-repeat;
-                    background-size: 100% 100%;
-                }
-                57.142% {
-                    background: url('images/gas4.png') no-repeat;
-                    background-size: 100% 100%;
-                }
-                71.428% {
-                    background: url('images/gas3.png') no-repeat;
-                    background-size: 100% 100%;
-                }
-                85.714% {
-                    background: url('images/gas2.png') no-repeat;
-                    background-size: 100% 100%;
-                }
-                100% {
-                    background: url('images/gas1.png') no-repeat;
-                    background-size: 100% 100%;
-                }
-                
-             }
+
+             
          }
          /*沙发*/
         .sofa{
