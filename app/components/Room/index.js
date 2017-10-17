@@ -3,6 +3,7 @@ import './room'
 import cs from 'classnames'
 import {Link,hashHistory} from 'react-router'
 import mp3 from './takeabow.mp3'
+// import gas from './images/gas.gif'
 var audio;
 class Room extends Component{
 	constructor(props) {
