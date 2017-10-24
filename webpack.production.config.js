@@ -60,7 +60,7 @@ module.exports = {
           }, {
               test: /\.(png|jpg|gif|jpeg)$/,
               exclude: /node_modules/,
-              use: ['url-loader?limit=8192&name=images/[hash:8].[name].[ext]']
+              use: ['url-loader?limit=81920&name=images/[hash:8].[name].[ext]']
             }
 
         ]

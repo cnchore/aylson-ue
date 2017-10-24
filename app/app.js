@@ -41,7 +41,7 @@ class App extends Component{
 	}
 	gotoKitchen(){
 		let left=-1*2*this.clientWidth;
-		this.setState({left,modelTips:false});
+		this.setState({left,modelTips:false,soundOpen:false});
 	}
 	handerFinger(){
 		let {fingerVisable} = this.state;
@@ -70,7 +70,7 @@ class App extends Component{
 		})
 	}
 	toggleFridge(type=true){
-		console.log('toggleFridge',type)
+		// console.log('toggleFridge',type)
 		let kitchenStyle ={
 			// transform:type?'translateY(-100%)':'translateY(0)',
 			zIndex:type?-1:'auto',
@@ -165,58 +165,58 @@ class App extends Component{
 
 		let width={width:this.clientWidth+'px'}
 		let style={width:3*this.clientWidth+'px',left:left+'px'}
-		
 		return <div style={style} className="q-main">
 						<div className="q-swiper" style={width}>
 							<Door  gotoRoom={this.gotoRoom.bind(this)} 
 										 handerFinger={this.handerFinger.bind(this)}
 										 modelVisable={fingerVisable}
 										 />
+							
 						</div>
 						<div className="q-swiper" style={width}>
-							<Room gotoDoor={this.gotoDoor.bind(this)}
-										gotoKitchen={this.gotoKitchen.bind(this)}
-										modelTips={modelTips}
-										lightOpen={lightOpen}
-										curtainsOpen={curtainsOpen}
-										windowOpen={windowOpen}
-										airRun={airRun}
-										soundOpen={soundOpen}
-										airOpen={airOpen}
-										style={roomStyle}
-										setState={this.handerSetState.bind(this)}
-										toggleAir={this.toggleAir.bind(this)}
-							/>
-							<Air gotoRoom={this.toggleAir.bind(this)}
-									 style={airStyle} 
-							/>
+								<Room gotoDoor={this.gotoDoor.bind(this)}
+											gotoKitchen={this.gotoKitchen.bind(this)}
+											modelTips={modelTips}
+											lightOpen={lightOpen}
+											curtainsOpen={curtainsOpen}
+											windowOpen={windowOpen}
+											airRun={airRun}
+											soundOpen={soundOpen}
+											airOpen={airOpen}
+											style={roomStyle}
+											setState={this.handerSetState.bind(this)}
+											toggleAir={this.toggleAir.bind(this)}
+								/>
+								<Air gotoRoom={this.toggleAir.bind(this)}
+										 style={airStyle} 
+								/>
 						</div>
 						<div className="q-swiper" style={width}>
-							<Kitchen gotoRoom={this.gotoRoom.bind(this)}
-										fridgeOpen={fridgeOpen_K}
-										lightOpen={lightOpen_K}
-										machineOpen={machineOpen_K}
-										fanOpen={fanOpen_K}
-										blowerOpen={blowerOpen_K}
-										beltOpen={beltOpen_K}
-										winOpen={winOpen_K}
-										recipesOpen={recipesOpen_K}
-										setState={this.handerSetState.bind(this)}
-										toggleFridge={this.toggleFridge.bind(this)}
-										toggleRecipes={this.toggleRecipes.bind(this)}
-										style={kitchenStyle}
-							/>
-							<Fridge toggleFridge={this.toggleFridge.bind(this)} 
-											style={fridgeStyle}
-							/>
-							<Recipes toggleRecipes={this.toggleRecipes.bind(this)}
-											style={recipesStyle}
-											toggleRecipesDetail={this.toggleRecipesDetail.bind(this)} 
-							/>
-							<RecipesDetail toggleRecipesDetail={this.toggleRecipesDetail.bind(this)} 
-											style={recipesDetailStyle}
-											code={code}
-							/>				
+								<Kitchen gotoRoom={this.gotoRoom.bind(this)}
+											fridgeOpen={fridgeOpen_K}
+											lightOpen={lightOpen_K}
+											machineOpen={machineOpen_K}
+											fanOpen={fanOpen_K}
+											blowerOpen={blowerOpen_K}
+											beltOpen={beltOpen_K}
+											winOpen={winOpen_K}
+											recipesOpen={recipesOpen_K}
+											setState={this.handerSetState.bind(this)}
+											toggleFridge={this.toggleFridge.bind(this)}
+											toggleRecipes={this.toggleRecipes.bind(this)}
+											style={kitchenStyle}
+								/>
+								<Fridge toggleFridge={this.toggleFridge.bind(this)} 
+												style={fridgeStyle}
+								/>
+								<Recipes toggleRecipes={this.toggleRecipes.bind(this)}
+												style={recipesStyle}
+												toggleRecipesDetail={this.toggleRecipesDetail.bind(this)} 
+								/>
+								<RecipesDetail toggleRecipesDetail={this.toggleRecipesDetail.bind(this)} 
+												style={recipesDetailStyle}
+												code={code}
+								/>				
 						</div>
 					</div>
 	}

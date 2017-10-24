@@ -26,6 +26,7 @@ class Room extends Component{
 		}
 	}
 	componentWillReceiveProps(nextProps){
+		// console.log('room',nextProps.modelTips,audio)
 		nextProps.modelTips && !audio && this.playAudio();
 	}
 	HTML5Audio(url, loop) {
@@ -113,14 +114,7 @@ class Room extends Component{
   }
 	render(){
 		const {lightOpen,curtainsOpen,windowOpen,airRun,soundOpen,airOpen,modelTips} =this.props;
-		// const {location} =this.props;
-		// let {query} = location;
-		// let animation=query&&query.animation?query.animation:'';
-		// let airOpen=query&&query.airOpen?query.airOpen:'true';
-		// let showTips=query && query.t?query.t:'false';
-		// onTouchStart={e=>this.handleStart(e)} 
-		// 		onTouchMove={e=>this.handleMove(e)} 
-		// 		onTouchEnd={e=>this.handleTouchEnd(e)} 
+		// modelTips && !audio && this.playAudio();
 		return (
 			<section className={cs('room')} style={this.props.style}
 				>

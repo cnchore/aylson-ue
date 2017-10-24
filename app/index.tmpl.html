@@ -13,6 +13,8 @@
 			    align-items: center;
 			    align-content: center;
 			    background-color: #fff;
+			    padding: 0;margin: 0;
+			    font-size: 0;
 			}
 			.loading:before{
 				content: '';
@@ -21,12 +23,17 @@
 				border-radius: 50%;
 				border-left: 4px solid #000;
 				animation: loadingrun 1s infinite linear;
+			  padding: 0;margin: 0;
+				font-size: 0;
 			}
 			.loading:after{
 				/*color: #fff;*/
 				content: 'loading';
 				position: absolute;
 				top: calc(50% + 44px);
+			  padding: 0;margin: 0;
+			  font-size: 16px;
+
 			}
 			@keyframes loadingrun{
 				0%{
@@ -38,10 +45,8 @@
 			} 
     </style>
   </head>
-  <body>
-    <div id='root'>
-    </div>
-  	<div id="loading" class="loading"></div>
+  <body class="loading">
+    <div id='root' style="display:none"></div>
     <script type="text/javascript">
     
 		(function(doc, win) {
@@ -55,9 +60,15 @@
 				} else {
 					docEl.style.fontSize = 32 * (clientWidth / 750) + 'px';
 				}
-				var loading=doc.getElementById('loading');
-				if(loading){
-					loading.style.display='none';
+				var body=doc.body;
+				if(body && body.classList){
+					setTimeout(function(){
+						body.classList.remove('loading');
+						doc.getElementById('root').style.display='block';
+					},500)
+				}else{
+					body.setAttribute("className","");
+					doc.getElementById('root').style.display='block';
 				}
 			};
 
