@@ -6,13 +6,16 @@
     <title>安居艾臣体验中心</title>
     <style>
     	.loading{
-			    width: 100vw;
-			    height: 100vh;
-			    display: flex;
-			    justify-content: center;
-			    align-items: center;
-			    align-content: center;
-			    background-color: #fff;
+    		padding: 0;
+    		margin: 0;
+		    width: 100vw;	
+		    height: 100vh;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    align-content: center;
+		    background-color: #fff;
+		    font-size: 0;
 			}
 			.loading:before{
 				content: '';
@@ -21,12 +24,18 @@
 				border-radius: 50%;
 				border-left: 4px solid #000;
 				animation: loadingrun 1s infinite linear;
+				font-size: 0;
+				padding: 0;
+				margin: 0;
 			}
 			.loading:after{
 				/*color: #fff;*/
+				font-size: 16px;
 				content: 'loading';
 				position: absolute;
 				top: calc(50% + 44px);
+				padding: 0;
+				margin: 0;
 			}
 			@keyframes loadingrun{
 				0%{
@@ -38,10 +47,9 @@
 			} 
     </style>
   </head>
-  <body>
-    <div id='root'>
-    </div>
-  	<div id="loading" class="loading"></div>
+  <body class="loading">
+  <div id="root" style="display: none"></div>
+  
     <script type="text/javascript">
     
 		(function(doc, win) {
@@ -55,9 +63,15 @@
 				} else {
 					docEl.style.fontSize = 32 * (clientWidth / 750) + 'px';
 				}
-				var loading=doc.getElementById('loading');
-				if(loading){
-					loading.style.display='none';
+				var loading=doc.body;
+				if(loading && loading.classList){
+					setTimeout(function(){
+						loading.classList.remove("loading");
+						// loading.style.display='none';
+						doc.getElementById('root').style.display='block';
+					},2000)
+				}else{
+					loading.setAttribute("className", ""); 
 				}
 			};
 
